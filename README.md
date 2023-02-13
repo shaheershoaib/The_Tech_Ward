@@ -18,7 +18,7 @@ The Project is under construction
  
  <p align="center">
 
-<img src="https://media1.giphy.com/media/8KWG2s3MR6SXbjccBO/giphy.gif?cid=ecf05e47pl9vi5sjnrem8einqiuiiye523y34t3xa1md8mjz&rid=giphy.gif" width = 400 height = 400>
+<img src="https://media1.giphy.com/media/8KWG2s3MR6SXbjccBO/giphy.gif" width = 400 height = 400 title = "https://media1.giphy.com/media/8KWG2s3MR6SXbjccBO/giphy.gif">
    
  </p>
   
