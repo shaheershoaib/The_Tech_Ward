@@ -12,7 +12,7 @@ Shaheer Shoaib
   
 ### Overview
  <hr>
-The Project is under construction
+The project is under construction
  <br>
  <br>
  
