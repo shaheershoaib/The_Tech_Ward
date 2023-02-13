@@ -21,6 +21,10 @@ The project is under construction
 <img src="https://media1.giphy.com/media/8KWG2s3MR6SXbjccBO/giphy.gif" width = 400 height = 400 title = "https://media1.giphy.com/media/8KWG2s3MR6SXbjccBO/giphy.gif">
    
  </p>
+ 
+The Tech Ward website is a comparable online discussion platform to HackerNews. The website allows users to participate in technological discussions. A user can register, make new posts, react to other threads, and rate the threads made by others. A guest (un-registered) user may just read the threads. The user will be able to filter the threads depending on various search filters such as programming, gadgets, machine learning, and so on.
+
+
   
   
  ### Status
