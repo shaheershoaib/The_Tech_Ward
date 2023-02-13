@@ -4,7 +4,7 @@
 
 ![Version - 0.0.1](https://img.shields.io/badge/version-pending-lightgrey?style=for-the-badge)
 
-**Maintainers:** <br />
+_**Maintainers:** <br />
 Shaheer Shoaib
 <br />
-Sai Rohith Enumala
+Sai Rohith Enumala_
