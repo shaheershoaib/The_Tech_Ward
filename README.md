@@ -36,7 +36,8 @@ The Project is under construction
 
 
 
-### Citations
+
+### References
   <hr>
   
   - This project is the part of the COSC 360 - Web Programming, The University Of British Columbia.
