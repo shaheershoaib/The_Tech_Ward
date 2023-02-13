@@ -33,3 +33,13 @@ The Project is under construction
 | Client-side experience | layout documented, Organization of pages, Logic process, Discusiion regarding the design and style of all pages, client-side validation and security, static design and styles of pages, examples of each page type | ❌|
 | Minimal core functionality | server side implementation, running on server, server side security, discussion thread storage in database, asynchronous update, complete database functionality, operational core functional components | ❌|
 | The full site|all the functional and non functional requirements are fully operational| ❌|
+
+
+
+### Citations
+  <hr>
+  
+  - This project is the part of the COSC 360 - Web Programming, The University Of British Columbia.
+  
+  - Some of the information above was taken in part from https://canvas.ubc.ca/courses/107676/pages/project-info?module_item_id=5375136
+
