@@ -7,4 +7,28 @@
 _**Maintainers:** <br />
 Shaheer Shoaib
 <br />
-Sai Rohith Enumala_
+ Sai Rohith Enumala_
+  
+  
+### Overview
+ <hr>
+The Project is Under Construction
+ <br>
+ 
+ <p align="center">
+
+<img src="https://media1.giphy.com/media/8KWG2s3MR6SXbjccBO/giphy.gif?cid=ecf05e47pl9vi5sjnrem8einqiuiiye523y34t3xa1md8mjz&rid=giphy.gif" width = 400 height = 400>
+   
+ </p>
+  
+  
+ ### Status
+  <hr>
+
+  
+  | Milestone | Requirements | Status|
+|--|--|--|
+| Proposal | decided on project requirements, ready to begin development | ✔️|
+| Client-side experience | layout documented, Organization of pages, Logic process, Discusiion regarding the design and style of all pages, client-side validation and security, static design and styles of pages, examples of each page type | ❌|
+| Minimal core functionality | server side implementation, running on server, server side security, discussion thread storage in database, asynchronous update, complete database functionality, operational core functional components | ❌|
+| The full site|all the functional and non functional requirements are fully operational| ❌|
