@@ -9,6 +9,9 @@ Shaheer Shoaib
 <br />
  Sai Rohith Enumala_
   
+ <p align = "center">
+ <img src="https://media.discordapp.net/attachments/1029445362223685664/1080738233119408128/Tech_Logo.png" width = 400 height = 400>
+ </p>
   
 ### Overview
  <hr>
