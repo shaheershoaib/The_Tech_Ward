@@ -47,3 +47,19 @@ input {
     margin-bottom: 16px;
     margin-left: 5px;
 }
+
+#login-side{
+    margin: auto;
+    float: right;
+}
+
+#signup-side{
+margin: auto;
+float: left;
+}
+
+#homepage-wrapper{
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
