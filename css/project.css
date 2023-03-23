@@ -23,6 +23,8 @@ body {
     font-size: smaller;
 }
 
+
+
 input {
 
     padding: 12px;
@@ -42,13 +44,22 @@ input {
 #signup-side{
 margin: auto;
 float: left;
-
 }
+
 #homepage-wrapper{
     display: flex;
     height: 100%;
     align-items: center;
 }
+
+.wrapper{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center; 
+    justify-content: center;
+}
+
 footer {
     position: absolute;
     left: 0;
@@ -57,3 +68,4 @@ footer {
     background-color: #90EE90;
     padding: 0.5em;
     margin-bottom: 0em;
+}
