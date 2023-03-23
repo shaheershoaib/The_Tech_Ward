@@ -5,14 +5,6 @@ body {
     height: 100%;
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #90EE90;
-}
-
 .logo {
     text-align: center;
     display: block;
@@ -24,12 +16,6 @@ footer {
     text-align: center;
 }
 
-footer {
-    padding: 0.5em;
-    margin-bottom: 0em;
-
-
-}
 
 .bf {
     text-align: center;
@@ -56,10 +42,18 @@ input {
 #signup-side{
 margin: auto;
 float: left;
-}
 
+}
 #homepage-wrapper{
     display: flex;
     height: 100%;
     align-items: center;
 }
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #90EE90;
+    padding: 0.5em;
+    margin-bottom: 0em;

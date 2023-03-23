@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/project.css">
+    <link rel="stylesheet" href="../css/nav.css">
+
+
+    <title> Login </title>
+    
+</head>
+<body>
+    <header>
+    <!-- <object style = "width: 100%" type="text/html" data="../html/navigation.html"></object> -->
+
+   <nav>
+        <div class="logo"> <img src="../Images/Tech Logo.png" width="100" height="100"> </div>
+        <div class="n"><div class="text"><p> The Tech Ward</p></div>
+            <ul><li><a href="#">New Forum</a></li>
+                <li><a href="#">Search For Forums</a></li>
+                <li><a href="#">Account</a></li>
+                <li><a href="#">Logout</a></li> </ul></div></nav>
+
+</header> 
+
+    <div class="heading">
+        <h1>Create a Forum</h1>
+    </div>
+
+    <div class="lform">
+        <form align="center" method="post" action="#">
+
+
+
+            <label for="title">Title:</label>
+            <input type="text" name="title"  required id="title">
+            <br><br>
+            <label for="description">Description:</label>
+            <textarea name="desc" required id="description"></textarea>
+            <br><br>
+            <label for="image">Upload Image (optional) : </label>
+            <input type="file" id="image" name="image" accept="image/png, image/jpeg" multiple>
+         <br><br>
+            <button type="reset">clear form</button>
+            <button type="submit">post</button>
+        </form>
+
+
+        <footer>
+            <a href="#">Home</a> | <a href="#">Browse</a> | <a href="#">Search</a><br><br>
+            <small><i>Copyright &copy; 2023 The Tech Ward</i></small>
+        </footer>
+     
+</body>
+</html>
