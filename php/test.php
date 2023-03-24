@@ -24,14 +24,14 @@ if($error != null)
 else
 {
     //good connection, so do you thing
-    $sql = "SELECT * FROM users;";
+    $sql = "SELECT * FROM user;";
 
     $results = mysqli_query($connection, $sql);
 
     //and fetch requsults
     while ($row = mysqli_fetch_assoc($results))
     {
-      echo $row['username']." ".$row['firstName']." ".$row['lastName']." ".$row['email']." ".$row['password']."<br/>";
+      echo $row['fullname']." ".$row['email']."<br/>";
     }
 
     mysqli_free_result($results);
