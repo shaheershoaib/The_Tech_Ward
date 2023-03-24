@@ -5,10 +5,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       }else{
 
 
-$host = "localhost";
-$database = "project";
-$user = "webuser";
-$password = "P@ssw0rd";
+        $host = "cosc360.ok.ubc.ca";
+        $database = "db_11505328";
+        $user = "11505328";
+        $password = "11505328";
 $connection = mysqli_connect($host, $user, $password, $database);
 $error = mysqli_connect_error();
 if($error != null)
