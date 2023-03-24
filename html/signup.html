@@ -6,6 +6,23 @@
     <link rel="stylesheet" href="../css/project.css">
 
     <title> Login </title>
+    <script>
+       window.onload = function()
+{
+    var form  = document.getElementById("mainform");
+    form.onsubmit = function(e)
+    {
+          var p1 = document.getElementById("pass");
+          var p2 = document.getElementById("cpass");
+          if (p1.value !== p2.value) {
+            alert("Password's do not match!!");
+            e.preventDefault();
+    
+          }
+        }
+        }
+        
+      </script>
 </head>
 
 <header>
@@ -23,7 +40,7 @@
     </div>
 
     <div class="lform">
-        <form align="center" method="post" action="../php/newuser.php">
+        <form align="center" method="post" action="../php/newuser.php" id = "mainform">
 
 
 

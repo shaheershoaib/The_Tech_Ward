@@ -36,8 +36,6 @@ else
         if ($r) {
             
             header("Location: ../html/login.html");
-            
-            
             exit();
         
         }
