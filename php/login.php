@@ -24,6 +24,9 @@ else
      $ds = "SELECT email FROM user WHERE email = '$email' and password ='$password';";
      $result = mysqli_query($connection, $ds);
     if (mysqli_fetch_assoc($result)) {
+      session_start();
+      $_SESSION["email"] = $email;
+      
         header("Location: ../html/discussions.html");
         exit();
       
