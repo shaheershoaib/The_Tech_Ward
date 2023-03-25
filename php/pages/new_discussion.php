@@ -58,7 +58,7 @@ unset($_SESSION['visited']);
 <div class = "wrapper">
     <div class="lform">
         <h1>Create a Discussion</h1>
-        <form align="center" method="post" action="/create/create_new_discussion.php">
+        <form align="center" method="post" action="../create/create_new_discussion.php">
             <label for="title">Title:</label>
             <input type="text" name="title"  required id="title">
             <br><br>

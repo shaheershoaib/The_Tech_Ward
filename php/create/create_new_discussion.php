@@ -67,7 +67,7 @@ else
         
         }
     
-        header("Location: ../../html/discussion.html");
+        header("Location: ../pages/show_discussions.php");
 
     
     exit();
