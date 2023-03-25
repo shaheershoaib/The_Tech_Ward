@@ -1,4 +1,7 @@
 <?php
+//session_start();
+
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if(empty($_POST["title"]) || empty($_POST["desc"])) {
         die("Input fields are missing");
@@ -83,4 +86,6 @@ else
 {
     die("Bad Request");
 }
+
+    
 ?>
