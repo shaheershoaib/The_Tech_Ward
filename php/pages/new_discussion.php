@@ -1,11 +1,25 @@
+
+
+<?php 
+
+session_start();
+if(empty($_SESSION['visited']))
+{
+$_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
+header("Location: ../login/logincheck.php"); 
+}
+else{
+unset($_SESSION['visited']);
+?>
+
 <!DOCTYPE html>
 <html>
 
 
 <head lang="en">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/project.css">
-    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../../css/project.css">
+    <link rel="stylesheet" href="../../css/nav.css">
 
 
     <title> Login </title>
@@ -14,28 +28,22 @@
 <body>
    
 
-
-
-
     
-    <header>
-    <!-- <object style = "width: 100%" type="text/html" data="../html/navigation.html"></object> -->
-
+<header>
    <nav>
-        <div class="logo"> <img src="../Images/logo.png" width="100" height="100"> </div>
+        <div class="logo"> <img src="../../images/logo.png" width="100" height="100"> </div>
         <div class="n"><div class="text"><p> The Tech Ward</p></div>
-            <ul><li><a href="../php/logincheck.php">New Discussion</a></li>
+            <ul><li><a href="../login/logincheck.php">New Discussion</a></li>
                 <li><a href="#">Search For Forums</a></li>
                 <li><a href="#">Account</a></li>
-                <li><a href="../php/logout.php">Logout</a></li> </ul></div></nav>
+                <li><a href="../login/logout.php">Logout</a></li> </ul></div></nav>
 
 </header> 
-
 
 <div class = "wrapper">
     <div class="lform">
         <h1>Create a Discussion</h1>
-        <form align="center" method="post" action="../php/new_discussion.php">
+        <form align="center" method="post" action="/create/create_new_discussion.php">
             <label for="title">Title:</label>
             <input type="text" name="title"  required id="title">
             <br><br>
@@ -58,3 +66,5 @@
      
 </body>
 </html>
+
+<?php  } ?>

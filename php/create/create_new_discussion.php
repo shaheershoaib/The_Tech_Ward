@@ -32,7 +32,7 @@ else
     session_start();
     if(empty($_SESSION['email']))
     {
-        header("Location: ../html/login.html");
+        header("Location: ../../html/login.html");
     }
    
     else
@@ -67,7 +67,7 @@ else
         
         }
     
-        header("Location: ../html/discussion.html");
+        header("Location: ../../html/discussion.html");
 
     
     exit();

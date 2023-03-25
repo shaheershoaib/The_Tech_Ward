@@ -31,8 +31,7 @@ else
     if (mysqli_fetch_assoc($result)) {
       session_start();
       $_SESSION["email"] = $email;
-      
-        header("Location: ../html/discussions.html");
+        header("Location: logincheck.php");
         exit();
       
    }else{
