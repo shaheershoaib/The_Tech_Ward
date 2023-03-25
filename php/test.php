@@ -5,10 +5,16 @@
 
 <?php
 
-$host = "cosc360.ok.ubc.ca";
-$database = "db_11505328";
-$user = "11505328";
-$password = "11505328";
+// $host = "cosc360.ok.ubc.ca";
+// $database = "db_11505328";
+// $user = "11505328";
+// $password = "11505328";
+
+
+$host = "localhost";
+$database = "project";
+$user = "webuser";
+$password = "P@ssw0rd";
 
 
 
