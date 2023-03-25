@@ -23,6 +23,20 @@ unset($_SESSION['visited']);
 
 
     <title> Login </title>
+
+    <style>
+        .wrapper{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer{
+            position: fixed;
+        }
+    </style>
     
 </head>
 <body>

@@ -1,17 +1,6 @@
 
-<?php 
 
-session_start();
-if(empty($_SESSION['visited']))
-{
-$_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
-header("Location: ../login/logincheck.php"); 
-}
-else{
-unset($_SESSION['visited']);
-
-
-
+<?php
 $host = "localhost";
 $database = "project";
 $user = "webuser";
@@ -31,7 +20,7 @@ else{
     $email = $_POST["email"];
     $password = md5($_POST["password"]);
 
-     $ds = "SELECT discussionId, title, email FROM discussion;";
+     $ds = "SELECT discussionId, title, fullname FROM discussion, user WHERE discussion.email = user.email";
      $result = mysqli_query($connection, $ds);
 }
 
@@ -89,13 +78,17 @@ else{
 <?php  
 
 while ($row = $result->fetch_assoc()) {
-  echo "<a href = discussion.php?discussionId=".$row["discussionId"]."> Title: ".$row["title"]."<br> User:".$row["email"]."</a><br><br>";
+  echo "<a href = discussion.php?discussionId=".$row["discussionId"]."> Title: ".$row["title"]."<br> User:".$row["fullname"]."</a><br><br>";
 }
 
 ?>
 
          </div>
 
+         <footer>
+            <a href="#">Home</a> | <a href="#">Browse</a> | <a href="#">Search</a><br><br>
+            <small><i>Copyright &copy; 2023 The Tech Ward</i></small>
+        </footer>
+
   </body>
 </html>
-<?php  } ?>
