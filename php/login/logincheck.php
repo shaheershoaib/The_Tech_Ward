@@ -25,6 +25,3 @@ else{
 
 
 ?>
-
-</body>
-</html>

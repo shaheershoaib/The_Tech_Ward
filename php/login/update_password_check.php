@@ -12,11 +12,8 @@ unset($_SESSION['visited']);
 ?>
 
 <?php
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    if(empty($_SESSION["email"])) {
-        die("Input fields are missing");
-      }else{
 
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 $host = "localhost";
 $database = "project";
@@ -41,7 +38,7 @@ else
         $d = "UPDATE user SET password = '$newpassword' WHERE email = '$email' ;";
         $r = mysqli_query($connection, $d);
         if($r){
-            header("Location: ../../html/login.html");
+            header("Location: ../pages/account.php");
         }
 
      
@@ -50,7 +47,7 @@ else
 
      echo "User not found";
     }
-}
+
 mysqli_free_result($r);
 mysqli_free_result($result);
 mysqli_close($connection);
@@ -60,15 +57,5 @@ else{
     die("Bad Request");
 }
 ?>
-
-
-
-
-
-
-
-
-
-
 
 <?php  } ?>

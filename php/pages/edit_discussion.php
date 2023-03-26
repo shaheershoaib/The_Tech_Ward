@@ -10,6 +10,7 @@ header("Location: ../login/logincheck.php");
 }
 else{
 unset($_SESSION['visited']);
+
 ?>
 
 <!DOCTYPE html>

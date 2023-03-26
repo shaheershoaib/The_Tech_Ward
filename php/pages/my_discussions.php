@@ -1,4 +1,14 @@
+<?php 
 
+session_start();
+if(empty($_SESSION['visited']))
+{
+$_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
+header("Location: ../login/logincheck.php"); 
+}
+else{
+unset($_SESSION['visited']);
+?>
 
 <?php
 $host = "localhost";
@@ -18,8 +28,11 @@ if($error != null){
 }
 else{
 
-    $ds = "SELECT discussionId, title, fullname FROM discussion, user WHERE discussion.email = user.email";
-    $result = mysqli_query($connection, $ds);
+
+     $email = $_SESSION["email"];
+     $sql = "SELECT discussionId, title, fullname FROM discussion, user WHERE user.email = discussion.email AND user.email = '$email'";
+     $result = mysqli_query($connection, $sql);
+    
 }
 
 
@@ -82,14 +95,20 @@ footer{
 
 <?php  
 
+
 while ($row = $result->fetch_assoc()) {
-  echo "<a href = discussion.php?discussionId=".$row["discussionId"]."> <h3> Title: ".$row["title"]." </h3> <br> User:".$row["fullname"]."</a><br><br>";
+
+    echo "<a href='discussion.php?discussionId=".$row["discussionId"]."'><h3>Title: ".$row["title"]."</h3><br>User: ".$row["fullname"]."</a>";
+    echo "<a href='../create/delete_discussion.php?discussionId=".$row["discussionId"]."'><button>Delete</button></a>";
+    echo "<br><br>";
+
 }
 
 ?>
 
          </div>
 
+         
          <footer>
             <a href="#">Home</a> | <a href="#">Browse</a> | <a href="#">Search</a><br><br>
             <small><i>Copyright &copy; 2023 The Tech Ward</i></small>
@@ -97,3 +116,5 @@ while ($row = $result->fetch_assoc()) {
 
   </body>
 </html>
+
+<?php } ?>

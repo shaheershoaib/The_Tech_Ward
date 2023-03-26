@@ -37,7 +37,7 @@ else
      header("Location: ../../html/signup.html");
     
 }
-mysqli_free_result($row);
+
 mysqli_free_result($result);
 mysqli_close($connection);
 }

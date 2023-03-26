@@ -81,11 +81,9 @@ else
 
       <h1 align = 'center'> Welcome ".$row["fullname"]." </h1> <br>
       <h2 align = 'center'> Email: " .$row["email"]. "</h2> <br>".
-      "<a href='../login/deleteuser.php'>Delete Account </a> <br><br>".
-      "<a href='updatepassword.php'>Update Password</a> <br><br>"
-    
-    
-      ;
+      "<a href='../create/deleteuser.php'>Delete Account </a> <br><br>".
+      "<a href='updatepassword.php'>Update Password</a> <br><br>".
+      "<a href = 'my_discussions.php'>My Discussions</a>";
         
    }
    else{

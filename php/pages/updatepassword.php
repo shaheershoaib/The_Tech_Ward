@@ -51,6 +51,10 @@ unset($_SESSION['visited']);
             e.preventDefault();
     
           }
+          else{
+            var form = document.getElementById("mainform");
+            form.setAttribute("method", "post");
+          }
         }
         }
         
@@ -76,7 +80,7 @@ unset($_SESSION['visited']);
 <div class = "wrapper">
     <div class="lform">
         <h1>Update Password</h1>
-        <form align="center" method="post" action="../login/updatecheck.php" id = "mainform">
+        <form align="center" method="post" action="../login/update_password_check.php" id = "mainform">
             <label for="oldpass">Old Password:</label>
             <input type="password" name="oldpass"  required id="oldpass">
             <br><br>

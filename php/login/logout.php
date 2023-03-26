@@ -10,5 +10,3 @@ header("Location: ../../html/login.html");
 exit();
 ?>
 
-</body>
-</html>
