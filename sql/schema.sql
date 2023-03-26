@@ -24,7 +24,7 @@ CREATE TABLE `discussion` (
   `description` varchar(1000) NOT NULL,
   `image` BLOB,
   `email` varchar(255) NOT NULL,
-  FOREIGN KEY (email) REFERENCES user(email)
+  FOREIGN KEY (email) REFERENCES user(email)  ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -34,6 +34,6 @@ CREATE TABLE `comment`(
 `likeCount` int NOT NULL,
 `discussionId` int NOT NULL,
 `email` varchar(255) NOT NULL,
-FOREIGN KEY (discussionId) REFERENCES discussion(discussionId),
-FOREIGN KEY (email) REFERENCES user(email)
-)
+FOREIGN KEY (discussionId) REFERENCES discussion(discussionId)  ON DELETE CASCADE,
+FOREIGN KEY (email) REFERENCES user(email)  ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -53,3 +53,11 @@ nav .n {
     margin-top: 2.5em;
     margin-left: 2em;
 }
+
+nav{
+    position: fixed;
+    top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  }

@@ -37,6 +37,24 @@ unset($_SESSION['visited']);
             position: fixed;
         }
     </style>
+
+<script>
+       window.onload = function()
+{
+    var form  = document.getElementById("mainform");
+    form.onsubmit = function(e)
+    {
+          var p1 = document.getElementById("pass");
+          var p2 = document.getElementById("cpass");
+          if (p1.value !== p2.value) {
+            alert("Password's do not match!!");
+            e.preventDefault();
+    
+          }
+        }
+        }
+        
+      </script>
     
 </head>
 <body>
@@ -48,7 +66,7 @@ unset($_SESSION['visited']);
         <div class="logo"> <img src="../../images/logo.png" width="100" height="100"> </div>
         <div class="n"><div class="text"><p> The Tech Ward</p></div>
         <?php $_SESSION['prev_page'] = $_SERVER['REQUEST_URI']; ?>
-            <ul><li><a href="../login/logincheck.php">New Discussion</a></li>
+            <ul><li><a href="new_discussion.php">New Discussion</a></li>
                 <li><a href="#">Search For Forums</a></li>
                 <li><a href="account.php">Account</a></li>
                 <li><a href="../login/logout.php">Logout</a></li> </ul></div></nav>
@@ -57,19 +75,20 @@ unset($_SESSION['visited']);
 
 <div class = "wrapper">
     <div class="lform">
-        <h1>Create a Discussion</h1>
-        <form align="center" method="post" action="../create/create_new_discussion.php">
-            <label for="title">Title:</label>
-            <input type="text" name="title"  required id="title">
+        <h1>Update Password</h1>
+        <form align="center" method="post" action="../login/updatecheck.php" id = "mainform">
+            <label for="oldpass">Old Password:</label>
+            <input type="password" name="oldpass"  required id="oldpass">
             <br><br>
-            <label for="description">Description:</label>
-            <textarea name="desc" required id="description"></textarea>
+            <label for="pass">New Password:</label>
+            <input type="password" name="pass"  required id="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
             <br><br>
-            <label for="image">Upload Image (optional) : </label>
-            <input type="file" id="image" name="image" accept="image/png, image/jpeg" enctype="multipart/form-data">
+            <label for="cpass">New Password:</label>
+            <input type="password" name="cpass"  required id="cpass">
          <br><br>
-            <button type="reset">clear form</button>
-            <button type="submit">post</button>
+            <button type="reset">Clear</button>
+            <button type="submit">Change</button>
         </form>
 
     </div>

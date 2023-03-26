@@ -54,6 +54,13 @@ else{
   right: 0;
   height: 100px;
   }
+
+footer{
+    position: fixed;
+    left: 0;
+  bottom: 0;
+  height: 100px;
+  }
 </style>
 
   </head>
@@ -66,7 +73,7 @@ else{
             <ul>
               <li><a href="new_discussion.php">New Discussion</a></li>
                 <li><a href="#">Search For Discussion</a></li>
-                <li><a href="#">Account</a></li>
+                <li><a href= "account.php">Account</a></li>
                 <li><a href="../login/logout.php">Logout</a></li> 
               </ul>
             </nav>
@@ -78,7 +85,7 @@ else{
 <?php  
 
 while ($row = $result->fetch_assoc()) {
-  echo "<a href = discussion.php?discussionId=".$row["discussionId"]."> Title: ".$row["title"]."<br> User:".$row["fullname"]."</a><br><br>";
+  echo "<a href = discussion.php?discussionId=".$row["discussionId"]."> <h3> Title: ".$row["title"]." </h3> <br> User:".$row["fullname"]."</a><br><br>";
 }
 
 ?>

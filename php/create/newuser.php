@@ -43,7 +43,7 @@ else
         $r = mysqli_query($connection, $statement);
         if ($r) {
             
-            header("Location: ../html/login.html");
+            header("Location: ../../html/login.html");
             exit();
         
         }
