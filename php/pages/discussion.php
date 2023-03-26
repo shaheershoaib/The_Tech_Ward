@@ -21,12 +21,12 @@ else{
     $discussionId = $params['discussionId'];
 
 
-    $ds = "SELECT discussionId, title, email, description FROM discussion WHERE discussionId = '$discussionId';";
+    $ds = "SELECT discussionId, title, fullname, description FROM discussion, user WHERE discussion.email = user.email AND discussionId = '$discussionId'; ";
     $result = mysqli_query($connection, $ds);
     
     if ($row = mysqli_fetch_assoc($result)) {
         echo"<h1>".$row["title"]."</h1>";
-        echo"<h3>By: ".$row["email"]."</h3>";
+        echo"<h3>By: ".$row["fullname"]."</h3>";
         echo "<h4>".$row["description"]."</h4>";
 
     } else {
