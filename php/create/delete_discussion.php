@@ -39,7 +39,7 @@ else{
     {
         $deleteStmt = "DELETE FROM discussion WHERE discussionId = '$discussionId'";
         $deleteResult = mysqli_query($connection, $deleteStmt);
-        header("Location: ../pages/account.php");
+        header("Location: ../pages/my_discussions.php");
                 
     }
     

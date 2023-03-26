@@ -44,7 +44,7 @@ else{
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>My Discussion</title>
     <link rel="stylesheet" href="../../css/project.css">
     <link rel="stylesheet" href="../../css/nav.css">
 <style>
@@ -100,6 +100,7 @@ while ($row = $result->fetch_assoc()) {
 
     echo "<a href='discussion.php?discussionId=".$row["discussionId"]."'><h3>Title: ".$row["title"]."</h3><br>User: ".$row["fullname"]."</a>";
     echo "<a href='../create/delete_discussion.php?discussionId=".$row["discussionId"]."'><button>Delete</button></a>";
+    echo "<a href='edit_my_discussion.php?discussionId=".$row["discussionId"]."'><button>Edit</button></a>";
     echo "<br><br>";
 
 }
@@ -108,7 +109,7 @@ while ($row = $result->fetch_assoc()) {
 
          </div>
 
-         
+     
          <footer>
             <a href="#">Home</a> | <a href="#">Browse</a> | <a href="#">Search</a><br><br>
             <small><i>Copyright &copy; 2023 The Tech Ward</i></small>

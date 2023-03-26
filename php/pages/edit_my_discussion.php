@@ -11,7 +11,44 @@ header("Location: ../login/logincheck.php");
 else{
 unset($_SESSION['visited']);
 
+$host = "localhost";
+$database = "project";
+$user = "webuser";
+$password = "P@ssw0rd";
+
+// $host = "cosc360.ok.ubc.ca";
+// $database = "db_11505328";
+// $user = "11505328";
+// $password = "11505328";
+$connection = mysqli_connect($host, $user, $password, $database);
+$error = mysqli_connect_error();
+if($error != null){
+  $output = "<p>Unable to connect to database!</p>";
+  exit($output);
+}
+else{
+
+
+    session_start();
+    parse_str($_SERVER['QUERY_STRING'], $params);
+    $discussionId = $params['discussionId'];
+    $email = $_SESSION['email'];
+    $sql = "SELECT user.email, title, description FROM discussion, user WHERE user.email = discussion.email AND user.email = '$email' AND discussionId = '$discussionId'";
+    $result = mysqli_query($connection, $sql);
+    $row = $result->fetch_assoc();
+    if(strcmp($email, $row["email"]) !== 0)
+     {
+        $err_message = "<p>Sorry, you cannot edit a discussion that was not created by you.</p>";
+        exit($err_message);
+                 
+     }
+           
+
+}
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -23,7 +60,7 @@ unset($_SESSION['visited']);
     <link rel="stylesheet" href="../../css/nav.css">
 
 
-    <title> Login </title>
+    <title> Edit My Discussion </title>
 
     <style>
         .wrapper{
@@ -58,19 +95,20 @@ unset($_SESSION['visited']);
 
 <div class = "wrapper">
     <div class="lform">
-        <h1>Create a Discussion</h1>
-        <form align="center" method="post" action="../create/create_new_discussion.php">
+        <h1>Edit Your Discussion</h1>
+        <form align="center" method="get" action="../create/edit_discussion.php">
             <label for="title">Title:</label>
-            <input type="text" name="title"  required id="title">
+            <input type="text" name="title"  required id="title" value = "<?php echo $row["title"];?>" >
             <br><br>
             <label for="description">Description:</label>
-            <textarea name="desc" required id="description"></textarea>
+            <textarea name="desc" required id="description"><?php echo $row["description"]; ?></textarea>
             <br><br>
             <label for="image">Upload Image (optional) : </label>
             <input type="file" id="image" name="image" accept="image/png, image/jpeg" enctype="multipart/form-data">
+            <input type="hidden" name="discussionId" value="<?php echo $discussionId; ?>">
          <br><br>
-            <button type="reset">clear form</button>
-            <button type="submit">post</button>
+            <button type="reset">Clear Discussion</button>
+            <button type="submit">Save Edit</button>
         </form>
 
     </div>
