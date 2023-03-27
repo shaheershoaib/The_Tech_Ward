@@ -1,3 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/project.css">
+    <link rel="stylesheet" href="../../css/nav.css">
+    <link rel="stylesheet" href="../../css/discussion.css">
+    
+
+    <title> Discussion </title>
+<style>
+    footer{
+            position: fixed;
+        }
+        </style>
+    
+</head>
+<body>
+
+<header>
+   <nav>
+        <div class="logo"> <a href = "show_discussions.php"> <img src="../../images/logo.png" width="100" height="100"></a> </div>
+        <div class="n"><div class="text">  <a href = "show_discussions.php"><p> The Tech Ward</p> </a></div>
+        <?php $_SESSION['prev_page'] = $_SERVER['REQUEST_URI']; ?>
+            <ul><li><a href="../login/logincheck.php">New Discussion</a></li>
+                <li><a href="#">Search For Discussion</a></li>
+                <li><a href="account.php">Account</a></li>
+                <li><a href="admin.php">Admin</a></li>
+                <li><a href="../login/logout.php">Logout</a></li> </ul></div></nav>
+
+</header> 
+<br> <br>  <br> <br>  <br> <br>
+
+
+<div class = "dis">
+
 <?php
 
 $host = "localhost";
@@ -25,18 +63,34 @@ else{
     $result = mysqli_query($connection, $ds);
     
     if ($row = mysqli_fetch_assoc($result)) {
+
+        
         echo"<h1>".$row["title"]."</h1>";
         echo"<h3>By: ".$row["fullname"]."</h3>";
+        echo "<br><br>";
         echo "<h4>".$row["description"]."</h4>";
+        
+
+      
 
 ?>
-        <h1>Comments</h1>
+</div>
+       
+
+<div class = "comm">
+  
+
+        <h1>Post Your Comment Here:</h1>
         <form method = "GET" action = "../create/create_comment.php">   
-        <textarea name = "comment" placeholder = "What are your thoughts?"></textarea>
+        <textarea name = "comment" placeholder = "What are your thoughts?" required></textarea>
         <input name = "discussionId" type = "hidden" value = "<?php echo $discussionId ?>">
         <br>
         <button>Add Comment</button>
         </form>
+        <br><br>
+        <h1>Comments:<h1>
+
+        </div>
         
     <?php
         $commentQuery = "SELECT fullname, body FROM user, comment WHERE user.email = comment.email AND comment.discussionId = '$discussionId'";
@@ -71,3 +125,12 @@ else{
 
 
 ?>
+
+
+<footer>
+            <a href="#">Home</a> | <a href="#">Browse</a> | <a href="#">Search</a><br><br>
+            <small><i>Copyright &copy; 2023 The Tech Ward</i></small>
+        </footer>
+
+</body>
+</html>

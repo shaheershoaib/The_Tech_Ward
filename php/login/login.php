@@ -1,4 +1,5 @@
 <?php
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if(empty($_POST["email"]) || empty($_POST["password"])) {
         die("Input fields are missing");
@@ -26,13 +27,19 @@ else
     $email = $_POST["email"];
     $password = md5($_POST["password"]);
 
-     $ds = "SELECT email FROM user WHERE email = '$email' and password ='$password';";
+     $ds = "SELECT email, admin FROM user WHERE email = '$email' and password ='$password';";
      $result = mysqli_query($connection, $ds);
-    if (mysqli_fetch_assoc($result)) {
+    if ($row = mysqli_fetch_assoc($result)) {
       session_start();
       $_SESSION["email"] = $email;
+      if($row['admin'] == true){
+        $_SESSION['admin'] = true;
+        header("Location: ../pages/admin.php");
+        exit();
+      }else{
         header("Location: logincheck.php");
         exit();
+      }
       
    }else{
     echo "Sorry, Invalid credentials or user not found";
