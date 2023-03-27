@@ -33,7 +33,6 @@
 <br> <br>  <br> <br>  <br> <br>
 
 
-<div class = "dis">
 
 <?php
 
@@ -61,6 +60,7 @@ else{
     $ds = "SELECT title, fullname, description FROM discussion, user WHERE discussion.email = user.email AND discussionId = '$discussionId'; ";
     $result = mysqli_query($connection, $ds);
     
+   echo "<div class = \"dis\">";
     if ($row = mysqli_fetch_assoc($result)) {
 
         
@@ -68,12 +68,13 @@ else{
         echo"<h3>By: ".$row["fullname"]."</h3>";
         echo "<br><br>";
         echo "<h4>".$row["description"]."</h4>";
-        
+    echo "</div>";
 
       
 
 ?>
-        <h1>Comments</h1>
+<div class = "comm">
+        <h1>Comments: </h1>
         <form method = "POST" action = "../create/create_comment.php">   
         <textarea name = "comment" placeholder = "What are your thoughts?"></textarea>
         <input name = "discussionId" type = "hidden" value = "<?php echo $discussionId ?>">
@@ -81,9 +82,8 @@ else{
         <button>Add Comment</button>
         </form>
         <br><br>
-        <h1>Comments:<h1>
 
-        </div>
+        
         
     <?php
         $commentQuery = "SELECT commentId, comment.email as commentEmail, fullname, body, discussionId FROM user, comment WHERE user.email = comment.email AND comment.discussionId = '$discussionId'";
@@ -111,6 +111,7 @@ else{
        
     ?>
 
+    </div>
 
 
         <script>
