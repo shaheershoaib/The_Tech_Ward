@@ -99,7 +99,7 @@ else{
             if(!empty($_SESSION['email']) && strcmp($row['commentEmail'], $_SESSION['email']) === 0 )
             {
                 echo "<button class = \"editButton\">Edit</button>";
-                echo "<button class = \"deleteButton\"></button>";
+                echo "<a href = \"../create/delete_comment.php?commentId={$row['commentId']}\"><button class = \"deleteButton\">Delete</button></a>";
             }
             echo "<br>";
             echo "</div>";
