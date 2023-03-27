@@ -70,8 +70,8 @@ else
         header("Location: ../pages/show_discussions.php");
 
     
-    exit();
     mysqli_close($connection);
+    exit();
 
     }
 }

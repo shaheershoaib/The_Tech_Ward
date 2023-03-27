@@ -31,7 +31,7 @@ else{
 
 ?>
         <h1>Comments</h1>
-        <form method = "GET" action = "../create/create_comment.php">   
+        <form method = "POST" action = "../create/create_comment.php">   
         <textarea name = "comment" placeholder = "What are your thoughts?"></textarea>
         <input name = "discussionId" type = "hidden" value = "<?php echo $discussionId ?>">
         <br>

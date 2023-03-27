@@ -2,7 +2,7 @@
 //session_start();
 
 
-if ($_SERVER['REQUEST_METHOD'] == "GET") {
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
       
 
 
@@ -33,8 +33,8 @@ else
 
     else
     {
-    $body = $_GET["comment"];
-    $discussionId = $_GET["discussionId"];
+    $body = $_POST["comment"];
+    $discussionId = $_POST["discussionId"];
     $email = $_SESSION['email'];
                    
             try
@@ -48,10 +48,6 @@ else
                 exit();
             }
 
-            
-           
-        
-        
     
         header("Location: ../pages/discussion.php?discussionId={$discussionId}");
 
