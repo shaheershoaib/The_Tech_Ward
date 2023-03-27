@@ -10,7 +10,8 @@ CREATE TABLE `user` (
   `fullname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL PRIMARY KEY,
   `password` varchar(255) NOT NULL,
-  `pfp` BLOB
+  `pfp` BLOB,
+  `admin` boolean
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 

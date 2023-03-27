@@ -85,6 +85,7 @@ footer{
               <li><a href="new_discussion.php">New Discussion</a></li>
                 <li><a href="#">Search For Discussion</a></li>
                 <li><a href= "account.php">Account</a></li>
+                <li><a href="admin.php">Admin</a></li>
                 <li><a href="../login/logout.php">Logout</a></li> 
               </ul>
             </nav>
