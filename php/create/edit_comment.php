@@ -32,16 +32,17 @@ else{
 
  //var_dump($_GET);
 
-    $title= $_GET["title"];
-    $desc = $_GET["desc"];
+
+    $comment= $_GET["comment"];
+    $commentId = $_GET["commentId"];
     $discussionId = $_GET["discussionId"]; 
-    $updateStmt = "UPDATE discussion SET title = '$title', description = '$desc' WHERE discussionId = '$discussionId'";
+    $updateStmt = "UPDATE comment SET body = '$comment' WHERE commentId = '$commentId'";
     $updateResult = mysqli_query($connection, $updateStmt);
-    header("Location: ../pages/my_discussions.php");
-              
-   
-}
+    header("Location: ../pages/discussion.php?discussionId={$discussionId}");
+ }
 
 }
+
+
         
 ?>
