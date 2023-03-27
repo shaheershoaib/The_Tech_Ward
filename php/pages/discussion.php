@@ -21,7 +21,7 @@ else{
     $discussionId = $params['discussionId'];
 
 
-    $ds = "SELECT discussionId, title, fullname, description FROM discussion, user WHERE discussion.email = user.email AND discussionId = '$discussionId'; ";
+    $ds = "SELECT title, fullname, description FROM discussion, user WHERE discussion.email = user.email AND discussionId = '$discussionId'; ";
     $result = mysqli_query($connection, $ds);
     
     if ($row = mysqli_fetch_assoc($result)) {
@@ -29,18 +29,37 @@ else{
         echo"<h3>By: ".$row["fullname"]."</h3>";
         echo "<h4>".$row["description"]."</h4>";
 
+?>
+        <h1>Comments</h1>
+        <form method = "GET" action = "../create/create_comment.php">   
+        <textarea name = "comment" placeholder = "What are your thoughts?"></textarea>
+        <input name = "discussionId" type = "hidden" value = "<?php echo $discussionId ?>">
+        <br>
+        <button>Add Comment</button>
+        </form>
+        
+    <?php
+        $commentQuery = "SELECT fullname, body FROM user, comment WHERE user.email = comment.email AND comment.discussionId = '$discussionId'";
+        $result = mysqli_query($connection, $commentQuery);
 
+        while($row = $result->fetch_assoc())
+        {
+            echo"<p>By: {$row['fullname']} </p>";
+            echo"<p>{$row['body']}</p>";
+            echo "<br>";
+        }
 
         // Support for comment
 
-        echo "<h1>Comments</h1>";
-        echo "<textarea name = \"comment\" placeholder = \"What are your thoughts?\"></textarea>";
-        echo "<br><button>Add Comment</button>";
+       
+    ?>
 
+
+        
         
 
 
-
+<?php
 
     } else {
         // Discussion with provided ID does not exist

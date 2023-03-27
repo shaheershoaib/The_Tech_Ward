@@ -79,8 +79,8 @@ footer{
 
   <nav>
 
-        <div class="logo"> <img src="../../images/logo.png" width="100" height="100"> </div>
-        <div class="n"><div class="text"><p> The Tech Ward</p></div>
+        <div class="logo"> <a href = "show_discussion.php"> <img src="../../images/logo.png" width="100" height="100"></a> </div>
+        <div class="n"><div class="text"> <a href = "show_discussion.php"><p> The Tech Ward</p> <a href = "show_discussion.php"></div>
             <ul>
               <li><a href="new_discussion.php">New Discussion</a></li>
                 <li><a href="#">Search For Discussion</a></li>
