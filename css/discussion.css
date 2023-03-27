@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+  }
+
+   .dis {
+    float: left;
+    width: 50%;
+    height: 100%;
+    
+   
+  } 
+  /* .comm{
+    float: right;
+    width: 50%;
+  
+    overflow: scroll;
+
+  }
+ */
