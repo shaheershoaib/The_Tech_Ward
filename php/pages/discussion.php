@@ -29,6 +29,19 @@ else{
         echo"<h3>By: ".$row["fullname"]."</h3>";
         echo "<h4>".$row["description"]."</h4>";
 
+
+
+        // Support for comment
+
+        echo "<h1>Comments</h1>";
+        echo "<textarea name = \"comment\" placeholder = \"What are your thoughts?\"></textarea>";
+        echo "<br><button>Add Comment</button>";
+
+        
+
+
+
+
     } else {
         // Discussion with provided ID does not exist
         echo "Discussion with ID $discussionId does not exist.";
