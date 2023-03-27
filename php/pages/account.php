@@ -26,7 +26,7 @@ unset($_SESSION['visited']);
 <body>
 <nav>
 
-        <div class="logo"> <a href = "show_discussions.php"><img src="../../images/logo.png" width="100" height="100"></a> </div>
+        <div class="logo"> <a href = "show_discussions.php"><img src="../../Images/logo.png" width="100" height="100"></a> </div>
         <div class="n"><div class="text"> <a href = "show_discussions.php"><p> The Tech Ward</p></a></div>
             <ul>
               <li><a href="new_discussion.php">New Discussion</a></li>
