@@ -2,6 +2,8 @@
 <?php 
 
 session_start();
+require_once('../db/dbConnection.php');
+
 if(empty($_SESSION['visited']))
 {
 $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
@@ -57,17 +59,11 @@ unset($_SESSION['visited']);
 
        
 
-// $host = "localhost";
-// $database = "project";
-// $user = "webuser";
-// $password = "P@ssw0rd";
 
-$host = "cosc360.ok.ubc.ca";
-$database = "db_11505328";
-$user = "11505328";
-$password = "11505328";
+     $dbConnection = new dbConnection();
+     $connection = $dbConnection->getConnection();
 
-$connection = mysqli_connect($host, $user, $password, $database);
+
 $error = mysqli_connect_error();
 if($error != null)
 {

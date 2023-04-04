@@ -15,10 +15,7 @@ unset($_SESSION['visited']);
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-// $host = "localhost";
-// $database = "project";
-// $user = "webuser";
-// $password = "P@ssw0rd";
+
 
 
 $host = "cosc360.ok.ubc.ca";

@@ -11,10 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 // $user = "webuser";
 // $password = "P@ssw0rd";
 
-$host = "cosc360.ok.ubc.ca";
-$database = "db_11505328";
-$user = "11505328";
-$password = "11505328";
+//$host = "cosc360.ok.ubc.ca";
+//$database = "db_11505328";
+//$user = "11505328";
+//$password = "11505328";
 
 
 $connection = mysqli_connect($host, $user, $password, $database);
@@ -48,7 +48,6 @@ else
    }
    
 }
-mysqli_free_result($r);
 mysqli_free_result($result);
 mysqli_close($connection);
 }
