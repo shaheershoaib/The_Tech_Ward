@@ -24,18 +24,24 @@ if($error != null){
 }
 
 else{
- //Check if discussion belongs to the user
-
-
- //var_dump($_GET);
 
 
     $comment= $_GET["comment"];
     $commentId = $_GET["commentId"];
     $discussionId = $_GET["discussionId"];
-    $updateStmt = "UPDATE comment SET body = '$comment' WHERE commentId = '$commentId'";
-    $updateResult = mysqli_query($connection, $updateStmt);
-    header("Location: ../pages/discussion.php?discussionId={$discussionId}");
+    if( ($comment!=null && $comment!= "") && ($commentId!=null && $commentId!="") && ($discussionId != null && $discussionId != "")) {
+
+        $sql = "SELECT * FROM user, comment WHERE comment.email = user.email AND commentId = '$commentId'";
+        $result = mysqli_query($connection, $sql);
+
+        if( ($row = $result->fetch_assoc()) || !empty($_SESSION['admin'])) {
+            $updateStmt = "UPDATE comment SET body = '$comment' WHERE commentId = '$commentId'";
+            $updateResult = mysqli_query($connection, $updateStmt);
+            header("Location: ../pages/discussion.php?discussionId={$discussionId}");
+        }
+    }
+    else echo "<p>Incomplete information.</p>";
+
  }
 
 }

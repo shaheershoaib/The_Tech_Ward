@@ -25,7 +25,7 @@
         <div class="n"><div class="text">  <a href = "show_discussions.php"><p> The Tech Ward</p> </a></div>
         <?php $_SESSION['prev_page'] = $_SERVER['REQUEST_URI']; ?>
             <ul><li><a href="new_discussion.php">New Discussion</a></li>
-                <li><a href="#">Search For Discussion</a></li>
+                <li><a href="show_discussions.php">Search For Discussion</a></li>
                 <li><a href="account.php">Account</a></li>
                 <li><a href="../login/logout.php">Logout</a></li> </ul></div></nav>
 
@@ -73,7 +73,7 @@ else{
 <div class = "comm">
         <h1>Comments: </h1>
         <form method = "POST" action = "../create/create_comment.php">   
-        <textarea name = "comment" placeholder = "What are your thoughts?"></textarea>
+        <textarea name = "comment" placeholder = "What are your thoughts?" required></textarea>
         <input name = "discussionId" type = "hidden" value = "<?php echo $discussionId ?>">
         <br>
         <button>Add Comment</button>
@@ -93,7 +93,7 @@ else{
             echo "<div class = \"child\">";
             echo"<p>{$row['body']}</p>";
             session_start();
-            if(!empty($_SESSION['email']) && strcmp($row['commentEmail'], $_SESSION['email']) === 0 )
+            if( (!empty($_SESSION['email']) && strcmp($row['commentEmail'], $_SESSION['email']) === 0) || !empty($_SESSION['admin']) )
             {
                 echo "<button class = \"editButton\">Edit</button>";
                 echo "<a href = \"../create/delete_comment.php?commentId={$row['commentId']}\"><button class = \"deleteButton\">Delete</button></a>";
@@ -116,17 +116,25 @@ else{
             for(let i=0; i<editButtons.length; i++) {
              editButtons[i].addEventListener("click", function() {
             var parentDiv = this.parentNode.parentNode;
+
             var childDiv = this.parentNode;
+
             var childDivComment = childDiv.firstChild.textContent;
+
             childDiv.remove();
+
             var editCommentTextArea = document.createElement("textarea");
             editCommentTextArea.innerHTML = childDivComment;
+            editCommentTextArea.setAttribute("required", '');
+
             var form = document.createElement("form");
             form.setAttribute("method", "GET");
             form.setAttribute("action", "../create/edit_comment.php");
+
             var saveEditButton = document.createElement("button");
             saveEditButton.innerHTML = "Save Edit";
             editCommentTextArea.setAttribute("name", "comment");
+
             var hiddenCommentInput = document.createElement("input");
             hiddenCommentInput.setAttribute("type", "hidden");
             hiddenCommentInput.setAttribute("name", "commentId");
