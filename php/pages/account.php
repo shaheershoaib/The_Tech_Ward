@@ -1,8 +1,10 @@
 
-<?php 
+<?php
+
+use db\dbConnection;
 
 session_start();
-require_once('../db/dbConnection.php');
+
 
 if(empty($_SESSION['visited']))
 {
@@ -57,12 +59,12 @@ unset($_SESSION['visited']);
  header("Location: ../../html/login.html");
 }else{
 
-       
 
 
+     require_once('../db/dbConnection.php');
      $dbConnection = new dbConnection();
      $connection = $dbConnection->getConnection();
-
+     $error = $dbConnection->getError();
 
 $error = mysqli_connect_error();
 if($error != null)

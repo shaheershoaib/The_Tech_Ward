@@ -1,5 +1,7 @@
 
-<?php 
+<?php
+
+use db\dbConnection;
 
 session_start();
 if(empty($_SESSION['visited']))
@@ -12,20 +14,13 @@ unset($_SESSION['visited']);
 ?>
 
 <?php
-
+require_once '../db/dbConnection.php';
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
+$dbConnection = new dbConnection();
+$connection = $dbConnection->getConnection();
+$error = $dbConnection->getError();
 
-
-
-$host = "cosc360.ok.ubc.ca";
-$database = "db_11505328";
-$user = "11505328";
-$password = "11505328";
-
-
-$connection = mysqli_connect($host, $user, $password, $database);
-$error = mysqli_connect_error();
 if($error != null)
 {
   $output = "<p>Unable to connect to database!</p>";
@@ -53,7 +48,6 @@ else
      echo "User not found";
     }
 
-mysqli_free_result($r);
 mysqli_free_result($result);
 mysqli_close($connection);
 }
