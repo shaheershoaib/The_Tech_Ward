@@ -4,6 +4,8 @@
 use db\dbConnection;
 
 session_start();
+use db\dbConnection;
+require_once('../db/dbConnection.php');
 
 
 if(empty($_SESSION['visited']))
@@ -61,12 +63,9 @@ unset($_SESSION['visited']);
 
 
 
-     require_once('../db/dbConnection.php');
-     $dbConnection = new dbConnection();
-     $connection = $dbConnection->getConnection();
-     $error = $dbConnection->getError();
-
-$error = mysqli_connect_error();
+  $dbConnection = new dbConnection();
+  $connection = $dbConnection->getConnection();
+  $error = $dbConnection->getError();
 if($error != null)
 {
   $output = "<p>Unable to connect to database!</p>";
