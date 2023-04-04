@@ -36,17 +36,14 @@
 
 <?php
 
-// $host = "localhost";
-// $database = "project";
-// $user = "webuser";
-// $password = "P@ssw0rd";
+use db\dbConnection;
 
-$host = "cosc360.ok.ubc.ca";
-$database = "db_11505328";
-$user = "11505328";
-$password = "11505328";
-$connection = mysqli_connect($host, $user, $password, $database);
-$error = mysqli_connect_error();
+require_once '../db/dbConnection.php';
+
+
+$dbConnection = new dbConnection();
+$connection = $dbConnection->getConnection();
+$error = $dbConnection->getError();
 if($error != null){
   $output = "<p>Unable to connect to database!</p>";
   exit($output);
@@ -125,7 +122,7 @@ else{
             var editCommentTextArea = document.createElement("textarea");
             editCommentTextArea.innerHTML = childDivComment;
             form = document.createElement("form");
-            form.setAttribute("method", "GET");
+            form.setAttribute("method", "POST");
             form.setAttribute("action", "../create/edit_comment.php");
             var saveEditButton = document.createElement("button");
             saveEditButton.innerHTML = "Save Edit";

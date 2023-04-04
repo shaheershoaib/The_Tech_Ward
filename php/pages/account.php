@@ -60,11 +60,9 @@ unset($_SESSION['visited']);
        
 
 
-     $dbConnection = new dbConnection();
-     $connection = $dbConnection->getConnection();
-
-
-$error = mysqli_connect_error();
+  $dbConnection = new dbConnection();
+  $connection = $dbConnection->getConnection();
+  $error = $dbConnection->getError();
 if($error != null)
 {
   $output = "<p>Unable to connect to database!</p>";
