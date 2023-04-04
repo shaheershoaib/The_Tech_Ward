@@ -3,7 +3,7 @@
 
 use db\dbConnection;
 
-require_once '../db/dbConnection.php';
+require_once 'db/dbConnection.php';
 $dbConnection = new dbConnection();
 $connection = $dbConnection->getConnection();
 $error = $dbConnection->getError();
@@ -32,11 +32,6 @@ else
                 exit();
             }
 
-            
-           
-        
-        
-    
         header("Location: ../html/login.html");
 
 
