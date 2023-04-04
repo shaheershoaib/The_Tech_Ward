@@ -24,7 +24,7 @@ else{
         <option value = "Post">Post</option>
     </select>
     <label>:</label>
-    <input name = "search" id = "searchBar" type = "search" placeholder = "Search by Name..." style = "width: 500px">
+    <input name = "search" id = "searchBar" type = "search" placeholder = "Search by Name..." style = "width: 500px" onkeydown="displaySearchResultsOnEnterKeyPress(event)">
     <button id = "searchButton" onclick = displaySearchResults()>Search</button>
 
 
@@ -32,13 +32,21 @@ else{
 
 <script>
 
+
+    function displaySearchResultsOnEnterKeyPress(e)
+    {
+        if(e.key == "Enter")
+            displaySearchResults();
+    }
+
     function displaySearchResults(){
         const searchQuery = document.getElementById("searchBar").value;
         const by = document.getElementById("selectList").value;
         $.get("search.php", {search: searchQuery, by: by}, function(data){
             const searchResultsDiv = $("#searchResults");
             searchResultsDiv.html(data); // We are overwriting the previous changes/data
-            searchResultsDiv.prepend($("<h1>Search Results</h1>"));
+            const selectList = document.getElementById("selectList");
+            searchResultsDiv.prepend($("<h2>Search Results By "+selectList.value+"</h2>"));
             });
     }
 
@@ -50,6 +58,7 @@ else{
         searchBar.setAttribute("placeholder", "Search by "+valueOfSelectList+"...");
 
     }
+
 
 
 </script>
