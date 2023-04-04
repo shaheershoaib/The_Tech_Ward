@@ -30,7 +30,7 @@ else{
     $sql = "SELECT email, discussionId FROM comment WHERE commentId = '$commentId'";
     $result = mysqli_query($connection, $sql);
     $row = $result->fetch_assoc();
-    if(strcmp($email, $row["email"]) === 0)
+    if(strcmp($email, $row["email"]) === 0 || !empty($_SESSION['admin']))
     {
         $deleteStmt = "DELETE FROM comment WHERE commentId = '$commentId'";
         $deleteResult = mysqli_query($connection, $deleteStmt);
