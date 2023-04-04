@@ -4,7 +4,7 @@
 use db\dbConnection;
 
 session_start();
-use db\dbConnection;
+
 require_once('../db/dbConnection.php');
 
 
