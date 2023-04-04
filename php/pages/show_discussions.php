@@ -73,9 +73,8 @@ footer{
               </ul>
             </nav>
   <br><br><br><br><br><br><br><br>
-
-  <h3>Search For Discussion</h3>
-  <input name = "search" id = "searchBar" type = "search" placeholder = "Search For Posts..." style = "width: 500px" onkeydown="displaySearchResultsOnEnterKeyPress(event)">
+  
+  <input name = "search" id = "searchBar" type = "search" placeholder = "Search For Discussions..." style = "width: 500px" onkeydown="displaySearchResultsOnEnterKeyPress(event)">
   <button id = "searchButton" onclick = "displaySearchResults()">Search</button>
 
   <div id = "discussionList">
@@ -120,6 +119,6 @@ while ($row = $result->fetch_assoc()) {
             searchResultsDiv.html(data); // We are overwriting the previous changes/data
         });
 
-        
+
     }
 </script>
