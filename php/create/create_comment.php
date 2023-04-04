@@ -1,23 +1,18 @@
 <?php
 //session_start();
+use db\dbConnection;
+
+require_once '../db/dbConnection.php';
+
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
       
 
 
-        $host = "cosc360.ok.ubc.ca";
-        $database = "db_11505328";
-        $user = "11505328";
-        $password = "11505328";
-
-        // $host = "localhost";
-        // $database = "project";
-        // $user = "webuser";
-        // $password = "P@ssw0rd";
-        
-$connection = mysqli_connect($host, $user, $password, $database);
-$error = mysqli_connect_error();
+    $dbConnection = new dbConnection();
+    $connection = $dbConnection->getConnection();
+    $error = $dbConnection->getError();
 if($error != null)
 {
   $output = "<p>Unable to connect to database!</p>";
