@@ -10,6 +10,7 @@ private $database;
 private $user;
 private $password;
 private $connection;
+private $error;
 
 
 // $host = "localhost";
@@ -29,6 +30,7 @@ private $connection;
         $this->user = "webuser";
         $this->password = "P@ssw0rd";
         $this->connection = mysqli_connect($this->host, $this->user, $this->password, $this->database);
+        $this->error = mysqli_connect_error();
     }
 
     public function getConnection()
@@ -39,6 +41,11 @@ private $connection;
     public function closeConnection()
     {
         mysqli_close($this->connection);
+    }
+
+    public function getError()
+    {
+        return $this->error;
     }
 
 }
