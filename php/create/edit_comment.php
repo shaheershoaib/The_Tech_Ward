@@ -32,7 +32,7 @@ else{
 
     $comment= $_GET["comment"];
     $commentId = $_GET["commentId"];
-    $discussionId = $_GET["discussionId"]; 
+    $discussionId = $_GET["discussionId"];
     $updateStmt = "UPDATE comment SET body = '$comment' WHERE commentId = '$commentId'";
     $updateResult = mysqli_query($connection, $updateStmt);
     header("Location: ../pages/discussion.php?discussionId={$discussionId}");

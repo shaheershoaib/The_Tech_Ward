@@ -30,7 +30,7 @@ else
       $_SESSION["email"] = $email;
       if($row['admin'] == true){
         $_SESSION['admin'] = true;
-        header("Location: ../pages/admin.php");
+        header("Location: ../pages/admin/admin.php");
         exit();
       }else{
         header("Location: logincheck.php");

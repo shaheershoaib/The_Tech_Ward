@@ -121,8 +121,8 @@ else{
             childDiv.remove();
             var editCommentTextArea = document.createElement("textarea");
             editCommentTextArea.innerHTML = childDivComment;
-            form = document.createElement("form");
-            form.setAttribute("method", "POST");
+            var form = document.createElement("form");
+            form.setAttribute("method", "GET");
             form.setAttribute("action", "../create/edit_comment.php");
             var saveEditButton = document.createElement("button");
             saveEditButton.innerHTML = "Save Edit";
