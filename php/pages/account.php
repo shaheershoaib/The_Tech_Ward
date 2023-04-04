@@ -39,6 +39,9 @@ unset($_SESSION['visited']);
                 <li><a href="show_discussions.php">Discussions</a></li>
                 <li><a href= "account.php">Account</a></li>
                 <li><a href="admin/admin.php">Admin</a></li>
+                <?php if(!empty($_SESSION['admin'])) {?>
+                <li><a href="admin/search_for_user.php">Search For User</a></li>
+                <?php } ?>
                 <li><a href="../login/logout.php">Logout</a></li> 
               </ul>
             </nav>

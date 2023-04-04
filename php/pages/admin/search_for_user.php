@@ -14,6 +14,24 @@ else{
 
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="../../../css/project.css">
+<link rel="stylesheet" href="../../../css/nav.css">
+
+<header>
+    <nav>
+        <div class="logo"> <a href = "../show_discussions.php"> <img src="../../../Images/logo.png" width="100" height="100"></a> </div>
+        <div class="n"><div class="text">  <a href = "../show_discussions.php"><p> The Tech Ward</p> </a></div>
+            <?php $_SESSION['prev_page'] = $_SERVER['REQUEST_URI']; ?>
+            <ul><li><a href="../new_discussion.php">New Discussion</a></li>
+                <li><a href="../show_discussions.php">Discussions</a></li>
+                <li><a href="../account.php">Account</a></li>
+                <li><a href="admin.php">Admin</a></li>
+                <li><a href="search_for_user.php">Search For User</a></li>
+                <li><a href="../../login/logout.php">Logout</a></li> </ul></div></nav>
+
+
+</header>
+<br><br><br><br><br><br><br><br>
 
 <h1>Search For User</h1>
 
