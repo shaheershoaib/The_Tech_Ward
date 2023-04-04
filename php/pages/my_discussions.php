@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+use db\dbConnection;
 
 session_start();
 if(empty($_SESSION['visited']))
@@ -11,7 +13,7 @@ unset($_SESSION['visited']);
 ?>
 
 <?php
-use db\dbConnection;
+
 
 require_once '../db/dbConnection.php';
 $dbConnection = new dbConnection();
