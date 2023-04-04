@@ -25,7 +25,7 @@ else{
     </select>
     <label>:</label>
     <input name = "search" id = "searchBar" type = "search" placeholder = "Search by Name..." style = "width: 500px" onkeydown="displaySearchResultsOnEnterKeyPress(event)">
-    <button id = "searchButton" onclick = displaySearchResults()>Search</button>
+    <button id = "searchButton" onclick = "displaySearchResults()">Search</button>
 
 
 <div id = "searchResults"></div>

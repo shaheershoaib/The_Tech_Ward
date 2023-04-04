@@ -36,16 +36,9 @@ else{
     <title>Homepage</title>
     <link rel="stylesheet" href="../../css/project.css">
     <link rel="stylesheet" href="../../css/nav.css">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
-  .discussionList{
-   margin-top: 200px;
-   width: 75%
-   display: flex;
-   justify-content: center;
-   flex-direction: column;
-  
-  
-  }
+
 
   nav{
     position: fixed;
@@ -63,6 +56,7 @@ footer{
   }
 </style>
 
+
   </head>
   <body>
 
@@ -78,10 +72,13 @@ footer{
                 <li><a href="../login/logout.php">Logout</a></li> 
               </ul>
             </nav>
+  <br><br><br><br><br><br><br><br>
 
+  <h3>Search For Discussion</h3>
+  <input name = "search" id = "searchBar" type = "search" placeholder = "Search For Posts..." style = "width: 500px" onkeydown="displaySearchResultsOnEnterKeyPress(event)">
+  <button id = "searchButton" onclick = "displaySearchResults()">Search</button>
 
-    <div class = "discussionList">
-
+  <div id = "discussionList">
 
 <?php  
 
@@ -104,4 +101,25 @@ while ($row = $result->fetch_assoc()) {
         </footer>
 
   </body>
+
 </html>
+<script>
+
+    function displaySearchResultsOnEnterKeyPress(e)
+    {
+        if(e.key == "Enter")
+            displaySearchResults();
+    }
+
+    function displaySearchResults(){
+
+
+        const searchQuery = document.getElementById("searchBar").value;
+        $.get("search_for_discussions.php", {search: searchQuery}, function(data){
+            const searchResultsDiv = $("#discussionList");
+            searchResultsDiv.html(data); // We are overwriting the previous changes/data
+        });
+
+        
+    }
+</script>
