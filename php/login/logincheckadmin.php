@@ -1,15 +1,16 @@
 <?php
 session_start();
 
-if(empty($_SESSION['email']) || empty($_SESSION['admin']))
+if(empty($_SESSION['admin']))
 {
-    header("Location: ../../html/login.html");
+    echo "Hey";
+   header("Location: ../../html/login.html");
     exit();
 }
 else{
 
    if(empty($_SESSION['prev_page']))
-        header("Location: ../pages/show_discussions.php");
+        header("Location: ../pages/admin/admin.php");
     else {
     $prev_page =  $_SESSION['prev_page'];
     unset($_SESSION['prev_page']);

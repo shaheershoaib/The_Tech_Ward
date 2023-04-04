@@ -8,6 +8,8 @@
 
 use db\dbConnection;
 
+
+
 require_once '../db/dbConnection.php';
 $dbConnection = new dbConnection();
 $connection = $dbConnection->getConnection();
@@ -18,8 +20,8 @@ if($error != null){
 }
 else{
 
-    $ds = "SELECT discussionId, title, fullname FROM discussion, user WHERE discussion.email = user.email";
-    $result = mysqli_query($connection, $ds);
+    $sql = "SELECT discussionId, title, fullname, user.email FROM discussion, user WHERE discussion.email = user.email";
+    $result = mysqli_query($connection, $sql);
 }
 
 
@@ -84,10 +86,12 @@ footer{
 <?php  
 
 while ($row = $result->fetch_assoc()) {
-  echo "<a href = discussion.php?discussionId=".$row["discussionId"]."> <h3> Title: ".$row["title"]." </h3> <br> User:".$row["fullname"]."</a><br><br>";
+  echo "<a href = discussion.php?discussionId=".$row["discussionId"]."> <h3> Title: ".$row["title"]." </h3> <br> User:".$row["fullname"]."</a>";
   session_start();
-  if($_SESSION["admin"])
-    echo "<a href='../create/delete_discussion.php?discussionId=".$row["discussionId"]."'><button>Delete</button></a>";
+  if($_SESSION["admin"] || $row["email"] == $_SESSION['email']) {
+      echo "<a href='../create/delete_discussion.php?discussionId=" . $row["discussionId"] . "'><button>Delete</button></a>";
+      echo "<a href='edit_my_discussion.php?discussionId=" . $row["discussionId"] . "'><button>Edit</button></a>";
+  }
 }
 
 ?>

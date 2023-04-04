@@ -48,7 +48,7 @@ unset($_SESSION['visited']);
         <div class="logo"><a href = "show_discussions.php"> <img src="../../Images/logo.png" width="100" height="100"> </a></div>
         <div class="n"><div class="text"><a href = "show_discussions.php"><p> The Tech Ward</p></a></div>
         <?php $_SESSION['prev_page'] = $_SERVER['REQUEST_URI']; ?>
-            <ul><li><a href="../login/logincheck.php">New Discussion</a></li>
+            <ul><li><a href="new_discussion.php">New Discussion</a></li>
                 <li><a href="#">Search For Discussion</a></li>
                 <li><a href="account.php">Account</a></li>
                 <li><a href="admin/admin.php">Admin</a></li>

@@ -26,16 +26,22 @@ else
      $ds = "SELECT email, admin FROM user WHERE email = '$email' and password ='$password';";
      $result = mysqli_query($connection, $ds);
     if ($row = mysqli_fetch_assoc($result)) {
-      session_start();
+
+        session_start();
+        session_destroy(); // Destroy any session data previously just in case
+        session_start(); //Start a new session
+
+
       $_SESSION["email"] = $email;
-      if($row['admin'] == true){
-        $_SESSION['admin'] = true;
+
+      if($row['admin'] == true)
+      {
+        $_SESSION['admin'] = 1;
         header("Location: ../pages/admin/admin.php");
-        exit();
-      }else{
-        header("Location: logincheck.php");
-        exit();
+
       }
+      else header("Location: logincheck.php");
+
       
    }else{
     echo "Sorry, Invalid credentials or user not found";

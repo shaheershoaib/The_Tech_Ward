@@ -30,7 +30,7 @@ else{
     $sql = "SELECT discussionId, email FROM discussion WHERE discussionId = '$discussionId'";
     $result = mysqli_query($connection, $sql);
     $row = $result->fetch_assoc();
-    if(strcmp($email, $row["email"]) === 0)
+    if(strcmp($email, $row["email"]) === 0 || !empty($_SESSION['admin']))
     {
         $deleteStmt = "DELETE FROM discussion WHERE discussionId = '$discussionId'";
         $deleteResult = mysqli_query($connection, $deleteStmt);

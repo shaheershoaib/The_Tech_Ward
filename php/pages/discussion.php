@@ -24,7 +24,7 @@
         <div class="logo"> <a href = "show_discussions.php"> <img src="../../Images/logo.png" width="100" height="100"></a> </div>
         <div class="n"><div class="text">  <a href = "show_discussions.php"><p> The Tech Ward</p> </a></div>
         <?php $_SESSION['prev_page'] = $_SERVER['REQUEST_URI']; ?>
-            <ul><li><a href="../login/logincheck.php">New Discussion</a></li>
+            <ul><li><a href="new_discussion.php">New Discussion</a></li>
                 <li><a href="#">Search For Discussion</a></li>
                 <li><a href="account.php">Account</a></li>
                 <li><a href="../login/logout.php">Logout</a></li> </ul></div></nav>

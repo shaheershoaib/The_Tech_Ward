@@ -1,7 +1,7 @@
 <?php 
 
 session_start();
-if(empty($_SESSION['visited']) || empty($_SESSION['admin']))
+if(empty($_SESSION['visited']))
 {
 $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
 header("Location: ../../login/logincheckadmin.php");
