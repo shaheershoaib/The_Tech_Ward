@@ -19,7 +19,6 @@ if($error != null){
   exit($output);
 }
 else{
-
     $sql = "SELECT discussionId, title, fullname, user.email FROM discussion, user WHERE discussion.email = user.email";
     $result = mysqli_query($connection, $sql);
 }
@@ -55,11 +54,6 @@ footer{
   height: 100px;
   }
 
-.discussion{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
 </style>
 
 
@@ -131,7 +125,6 @@ footer{
 
 
 
-
     /** This function takes the previous submitted search query value **/
     const searchButton = document.getElementById("searchButton");
 
@@ -156,7 +149,6 @@ footer{
     /** UPDATE RESULTS EVERY 5 SECONDS **/
     setInterval(function(){
             updateSearchResults();
-            console.log("Update search results with prevSearchQuery: "+prevSearchQuery);
     }, 5000);
 
 

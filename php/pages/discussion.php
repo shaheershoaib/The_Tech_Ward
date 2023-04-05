@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../../css/project.css">
     <link rel="stylesheet" href="../../css/nav.css">
     <link rel="stylesheet" href="../../css/discussion.css">
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
     <title> Discussion </title>
 <style>
@@ -86,33 +87,10 @@ else{
         <br><br>
 
         
-        
-    <?php
-        $commentQuery = "SELECT commentId, comment.email as commentEmail, fullname, body, discussionId FROM user, comment WHERE user.email = comment.email AND comment.discussionId = '$discussionId'";
-        $result = mysqli_query($connection, $commentQuery);
 
-        while($row = $result->fetch_assoc())
-        {
-            echo "<div class = \"parent\" commentId = {$row['commentId']} discussionId = {$row['discussionId']}>";
-            echo"<p>By: {$row['fullname']} </p>";
-            echo "<div class = \"child\">";
-            echo"<p>{$row['body']}</p>";
-            session_start();
-            if( (!empty($_SESSION['email']) && strcmp($row['commentEmail'], $_SESSION['email']) === 0) || !empty($_SESSION['admin']) )
-            {
-                echo "<button class = \"editButton\">Edit</button>";
-                echo "<a href = \"../create/delete_comment.php?commentId={$row['commentId']}\"><button class = \"deleteButton\">Delete</button></a>";
-            }
-            echo "<br>";
-            echo "</div>";
-            echo "</div>";
-        }
+    <div id = "commentList">
 
-        // Support for comment
-
-       
-    ?>
-
+</div>
     </div>
 
 
@@ -159,12 +137,6 @@ else{
             });
         }
 
-        var deleteButtons = document.getElementByClassName("deleteButton");
-        for(let i=0; i<deleteButtons.length; i++)
-        {
-            
-        }
-
         </script>
         
         
@@ -191,3 +163,20 @@ else{
 
 </body>
 </html>
+<script>
+
+    function updateComments()
+    {
+
+        $.get("show_comments.php", {discussionId: <?php echo $discussionId ?>}, function(data){
+            $("#commentList").html(data);
+        })
+        console.log("Updated comments");
+    }
+
+
+    updateComments();
+    setInterval(updateComments, 5000);
+
+
+</script>
