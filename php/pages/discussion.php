@@ -95,47 +95,7 @@ else{
 
 
         <script>
-           var editButtons = document.getElementsByClassName("editButton");
-            for(let i=0; i<editButtons.length; i++) {
-             editButtons[i].addEventListener("click", function() {
-            var parentDiv = this.parentNode.parentNode;
 
-            var childDiv = this.parentNode;
-
-            var childDivComment = childDiv.firstChild.textContent;
-
-            childDiv.remove();
-
-            var editCommentTextArea = document.createElement("textarea");
-            editCommentTextArea.innerHTML = childDivComment;
-            editCommentTextArea.setAttribute("required", '');
-
-            var form = document.createElement("form");
-            form.setAttribute("method", "GET");
-            form.setAttribute("action", "../create/edit_comment.php");
-
-            var saveEditButton = document.createElement("button");
-            saveEditButton.innerHTML = "Save Edit";
-            editCommentTextArea.setAttribute("name", "comment");
-
-            var hiddenCommentInput = document.createElement("input");
-            hiddenCommentInput.setAttribute("type", "hidden");
-            hiddenCommentInput.setAttribute("name", "commentId");
-            hiddenCommentInput.setAttribute("value", parentDiv.getAttribute("commentId"));
-
-            var hiddenDiscussionInput = document.createElement("input");
-            hiddenDiscussionInput.setAttribute("type", "hidden");
-            hiddenDiscussionInput.setAttribute("name", "discussionId");
-            hiddenDiscussionInput.setAttribute("value", parentDiv.getAttribute("discussionId"));
-          
-            form.appendChild(editCommentTextArea);
-            form.appendChild(saveEditButton);
-            form.appendChild(hiddenCommentInput);
-            form.appendChild(hiddenDiscussionInput);
-            parentDiv.appendChild(form);
-            
-            });
-        }
 
         </script>
         
@@ -171,12 +131,13 @@ else{
         $.get("show_comments.php", {discussionId: <?php echo $discussionId ?>}, function(data){
             $("#commentList").html(data);
         })
-        console.log("Updated comments");
     }
 
 
     updateComments();
     setInterval(updateComments, 5000);
+
+    
 
 
 </script>
