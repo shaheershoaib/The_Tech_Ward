@@ -37,55 +37,27 @@ while ($row = $result->fetch_assoc()) {
 ?>
 
 <script>
-    var editButtons = document.getElementsByClassName("editButton");
-    for(let i=0; i<editButtons.length; i++) {
-        editButtons[i].addEventListener("click", function() {
-            var parentDiv = this.parentNode.parentNode;
+    $(".editButton").on("click", function(){
+        const parentDiv = $(this).parent().parent();
+        const childDiv = $(this).parent();
+        const childDivComment = childDiv.children().first().text();
 
-            var childDiv = this.parentNode;
+        childDiv.remove();
 
-            var childDivComment = childDiv.firstChild.textContent;
+        const editCommentTextArea = $('<textarea>').html(childDivComment).attr('required', '');
+        const form = $('<form>').attr('method', 'GET').attr('action', '../create/edit_comment.php');
+        const saveEditButton = $('<button>').html('Save Edit').addClass('saveEditButton');
+        editCommentTextArea.attr('name', 'comment');
+        const hiddenCommentInput = $('<input>').attr('type', 'hidden').attr('name', 'commentId').val(parentDiv.attr('commentId'));
+        const hiddenDiscussionInput = $('<input>').attr('type', 'hidden').attr('name', 'discussionId').val(parentDiv.attr('discussionId'));
 
-            childDiv.remove();
+        form.append(editCommentTextArea);
+        form.append(saveEditButton);
+        form.append(hiddenCommentInput);
+        form.append(hiddenDiscussionInput);
+        parentDiv.append(form);
+    });
 
-            var editCommentTextArea = document.createElement("textarea");
-            editCommentTextArea.innerHTML = childDivComment;
-            editCommentTextArea.setAttribute("required", '');
-
-            var form = document.createElement("form");
-            form.setAttribute("method", "GET");
-            form.setAttribute("action", "../create/edit_comment.php");
-
-            var saveEditButton = document.createElement("button");
-            saveEditButton.innerHTML = "Save Edit";
-            saveEditButton.setAttribute("class", "saveEditButton");
-
-            editCommentTextArea.setAttribute("name", "comment");
-
-            var hiddenCommentInput = document.createElement("input");
-            hiddenCommentInput.setAttribute("type", "hidden");
-            hiddenCommentInput.setAttribute("name", "commentId");
-            hiddenCommentInput.setAttribute("value", parentDiv.getAttribute("commentId"));
-
-            var hiddenDiscussionInput = document.createElement("input");
-            hiddenDiscussionInput.setAttribute("type", "hidden");
-            hiddenDiscussionInput.setAttribute("name", "discussionId");
-            hiddenDiscussionInput.setAttribute("value", parentDiv.getAttribute("discussionId"));
-
-            form.appendChild(editCommentTextArea);
-            form.appendChild(saveEditButton);
-            form.appendChild(hiddenCommentInput);
-            form.appendChild(hiddenDiscussionInput);
-            parentDiv.appendChild(form);
-
-        });
-
-
-
-
-
-
-    }
 
 </script>
 

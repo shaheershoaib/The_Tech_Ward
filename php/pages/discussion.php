@@ -141,27 +141,20 @@ else{
         {
             $.get("show_comments.php", {discussionId: <?php echo $discussionId ?>}, function(data){
                 $("#commentList").html(data);
-                console.log("Update comments as onEdit is false");
                 addEventListeners();
             })
         }
 
-        else console.log("Not updating comments as onEdit is true");
     }
 
     function addEventListeners()
     {
         $(".editButton").on("click", function(){
+
             onEdit = true;
-            console.log("onEdit is set to true");
-        })
 
-        $(".saveEditButton").on("click", function(){
+        });
 
-
-            onEdit = false;
-            console.log("onEdit is set to false");
-        })
 
     }
 
