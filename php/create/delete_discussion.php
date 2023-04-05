@@ -34,7 +34,9 @@ else{
     {
         $deleteStmt = "DELETE FROM discussion WHERE discussionId = '$discussionId'";
         $deleteResult = mysqli_query($connection, $deleteStmt);
-        header("Location: ../pages/my_discussions.php");
+        $file =  basename($_SERVER["HTTP_REFERER"]);
+        header("Location: ../pages/".$file);
+
                 
     }
     
