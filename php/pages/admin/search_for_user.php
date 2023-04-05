@@ -17,6 +17,20 @@ else{
 <link rel="stylesheet" href="../../../css/project.css">
 <link rel="stylesheet" href="../../../css/nav.css">
 
+<style>
+        .wrapper{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer{
+            position: fixed;
+        }
+    </style>
+
 <header>
     <nav>
         <div class="logo"> <a href = "../show_discussions.php"> <img src="../../../Images/logo.png" width="100" height="100"></a> </div>
@@ -80,3 +94,9 @@ else{
 
 
 </script>
+
+</div>
+        <footer>
+            <a href="#">Home</a> | <a href="#">Browse</a> | <a href="#">Search</a><br><br>
+            <small><i>Copyright &copy; 2023 The Tech Ward</i></small>
+        </footer>
