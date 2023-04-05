@@ -13,15 +13,6 @@ private $connection;
 private $error;
 
 
-// $host = "localhost";
-// $database = "project";
-// $user = "webuser";
-// $password = "P@ssw0rd";
-
-//$host = "cosc360.ok.ubc.ca";
-//$database = "db_11505328";
-//$user = "11505328";
-//$password = "11505328";
 
     public function __construct()
     {
@@ -29,6 +20,12 @@ private $error;
         $this->database = "project";
         $this->user = "webuser";
         $this->password = "P@ssw0rd";
+
+        // $this->host = "cosc360.ok.ubc.ca";
+        // $this->database = "db_11505328";
+        // $this->user = "11505328";
+        // $this->password = "11505328";
+
         $this->connection = mysqli_connect($this->host, $this->user, $this->password, $this->database);
         $this->error = mysqli_connect_error();
     }
