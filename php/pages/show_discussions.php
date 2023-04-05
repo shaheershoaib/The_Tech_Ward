@@ -91,34 +91,6 @@ footer{
 
   <div id = "discussionList">
 
-<?php  
-
-while ($row = $result->fetch_assoc()) {
-    ?>
-    <div class = discussion>
-
-
-        <div class = "like-dislike-buttons">
-            <br>
-            <button>&#8593;</button>
-            <p>0</p>
-            <button>&#8595</button>
-        </div>
-
-      <?php
-  echo "<a href = discussion.php?discussionId=".$row["discussionId"]."> <h3> Title: ".$row["title"]." </h3> <br> User:".$row["fullname"]."</a>";
-  session_start();
-  if($_SESSION["admin"] || $row["email"] == $_SESSION['email']) {
-      echo "<a href='../create/delete_discussion.php?discussionId=" . $row["discussionId"] . "'><button>Delete</button></a>";
-      echo "<a href='edit_my_discussion.php?discussionId=" . $row["discussionId"] . "'><button>Edit</button></a>";
-  }
-
-  ?>
-    </div>
-
-    <?php } ?>
-
-
 
          </div>
 
@@ -147,6 +119,45 @@ while ($row = $result->fetch_assoc()) {
             searchResultsDiv.html(data); // We are overwriting the previous changes/data
         });
 
-
     }
+
+
+    function updateSearchResults(){
+        $.get("search_for_discussions.php", {search: prevSearchQuery}, function(data){
+            const searchResultsDiv = $("#discussionList");
+            searchResultsDiv.html(data); // We are overwriting the previous changes/data
+        });
+    }
+
+
+
+
+    /** This function takes the previous submitted search query value **/
+    const searchButton = document.getElementById("searchButton");
+
+    //Cahnge prevSearchQuery on submit click
+    var prevSearchQuery = "";
+    searchButton.addEventListener("click", function(){
+
+        prevSearchQuery = document.getElementById("searchBar").value;
+    })
+
+    //Change prevSearchQuery on enter key press
+    const searchBar = document.getElementById("searchBar");
+    searchBar.addEventListener("keydown", function(e){
+        if(e.key=="Enter")
+            prevSearchQuery = document.getElementById("searchBar").value;
+    })
+
+
+
+    displaySearchResults(); // Call displaySearchResults when page is loaded
+
+    /** UPDATE RESULTS EVERY 5 SECONDS **/
+    setInterval(function(){
+            updateSearchResults();
+            console.log("Update search results with prevSearchQuery: "+prevSearchQuery);
+    }, 5000);
+
+
 </script>
