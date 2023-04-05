@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <?php
 
 
@@ -14,6 +15,7 @@ if($error!=null)
 $discussionId = $_GET["discussionId"];
 $commentQuery = "SELECT commentId, comment.email as commentEmail, fullname, body, discussionId FROM user, comment WHERE user.email = comment.email AND comment.discussionId = '$discussionId'";
 $result = mysqli_query($connection, $commentQuery);
+$edit = false;
 
 while ($row = $result->fetch_assoc()) {
     echo "<div class = \"parent\" commentId = {$row['commentId']} discussionId = {$row['discussionId']}>";
@@ -56,6 +58,8 @@ while ($row = $result->fetch_assoc()) {
 
             var saveEditButton = document.createElement("button");
             saveEditButton.innerHTML = "Save Edit";
+            saveEditButton.setAttribute("class", "saveEditButton");
+
             editCommentTextArea.setAttribute("name", "comment");
 
             var hiddenCommentInput = document.createElement("input");
@@ -75,6 +79,12 @@ while ($row = $result->fetch_assoc()) {
             parentDiv.appendChild(form);
 
         });
+
+
+
+
+
+
     }
 
 </script>

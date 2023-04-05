@@ -125,19 +125,51 @@ else{
 </html>
 <script>
 
-    function updateComments()
-    {
+    var onEdit = false;
 
+    function initialUpdateComments()
+    {
         $.get("show_comments.php", {discussionId: <?php echo $discussionId ?>}, function(data){
             $("#commentList").html(data);
+            addEventListeners(); // This will execute once function(data) is called, which means it's executed after the data has been successfully returned from show_comments.php
         })
     }
 
+    function updateCommentsIfNotOnEdit() // During the interval loop, only update comment if onEdit == False
+    {
+        if(!onEdit)
+        {
+            $.get("show_comments.php", {discussionId: <?php echo $discussionId ?>}, function(data){
+                $("#commentList").html(data);
+                console.log("Update comments as onEdit is false");
+                addEventListeners();
+            })
+        }
 
-    updateComments();
-    setInterval(updateComments, 5000);
+        else console.log("Not updating comments as onEdit is true");
+    }
 
-    
+    function addEventListeners()
+    {
+        $(".editButton").on("click", function(){
+            onEdit = true;
+            console.log("onEdit is set to true");
+        })
+
+        $(".saveEditButton").on("click", function(){
+
+
+            onEdit = false;
+            console.log("onEdit is set to false");
+        })
+
+    }
+
+    initialUpdateComments(); // Make our inital call to update comments, but this initial call will create our event listeners to change the value of "onEdit"
+    setInterval(updateCommentsIfNotOnEdit, 5000);
+
+
+
 
 
 </script>
