@@ -30,7 +30,7 @@ if($by == "Name")
 else if($by == "Email")
     $sql = "SELECT fullname, email FROM user WHERE email LIKE '$search%'";
 else
-    $sql = "SELECT fullname, user.email FROM user, discussion WHERE discussion.email = user.email AND title LIKE '$search%'";
+    $sql = "SELECT DISTINCT fullname,user.email FROM user, discussion WHERE discussion.email = user.email AND title LIKE '$search%'";
 
 $result = mysqli_query($connection, $sql);
 while($row = $result->fetch_assoc())

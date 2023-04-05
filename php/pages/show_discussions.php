@@ -54,6 +54,12 @@ footer{
   bottom: 0;
   height: 100px;
   }
+
+.discussion{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 </style>
 
 
@@ -80,20 +86,38 @@ footer{
   <input name = "search" id = "searchBar" type = "search" placeholder = "Search For Discussions..." style = "width: 500px" onkeydown="displaySearchResultsOnEnterKeyPress(event)">
   <button id = "searchButton" onclick = "displaySearchResults()">Search</button>
 
+
+
   <div id = "discussionList">
 
 <?php  
 
 while ($row = $result->fetch_assoc()) {
+    ?>
+    <div class = discussion>
+
+
+        <div class = "like-dislike-buttons">
+            <br>
+            <button>&#8593;</button>
+            <p>0</p>
+            <button>&#8595</button>
+        </div>
+
+      <?php
   echo "<a href = discussion.php?discussionId=".$row["discussionId"]."> <h3> Title: ".$row["title"]." </h3> <br> User:".$row["fullname"]."</a>";
   session_start();
   if($_SESSION["admin"] || $row["email"] == $_SESSION['email']) {
       echo "<a href='../create/delete_discussion.php?discussionId=" . $row["discussionId"] . "'><button>Delete</button></a>";
       echo "<a href='edit_my_discussion.php?discussionId=" . $row["discussionId"] . "'><button>Edit</button></a>";
   }
-}
 
-?>
+  ?>
+    </div>
+
+    <?php } ?>
+
+
 
          </div>
 
