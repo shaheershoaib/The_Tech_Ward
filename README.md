@@ -37,8 +37,8 @@ The Tech Ward website is a comparable online discussion platform to HackerNews. 
   | Milestone | Requirements | Status|
 |--|--|--|
 | Proposal | decided on project requirements, ready to begin development | ✔️|
-| Client-side experience | layout documented, Organization of pages, Logic process, Discusiion regarding the design and style of all pages, client-side validation and security, static design and styles of pages, examples of each page type | ❌|
-| Minimal core functionality | server side implementation, running on server, server side security, discussion thread storage in database, asynchronous update, complete database functionality, operational core functional components | ❌|
+| Client-side experience | layout documented, Organization of pages, Logic process, Discusiion regarding the design and style of all pages, client-side validation and security, static design and styles of pages, examples of each page type |  ✔️|
+| Minimal core functionality | server side implementation, running on server, server side security, discussion thread storage in database, asynchronous update, complete database functionality, operational core functional components |  ✔️|
 | The full site|all the functional and non functional requirements are fully operational| ❌|
 
 
