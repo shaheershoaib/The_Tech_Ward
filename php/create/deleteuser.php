@@ -20,7 +20,7 @@ unset($_SESSION['visited']);
 }else{
 
 
-     require_once '../db/dbConnecton.php';
+     require_once '../db/dbConnection.php';
 $dbConnection = new dbConnection();
 $connection = $dbConnection->getConnection();
 $error = $dbConnection->getError();
