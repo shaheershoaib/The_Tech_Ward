@@ -69,8 +69,8 @@ while ($row = $result->fetch_assoc()) {
 
     /**  Find if user liked or disliked particular discussion  */
     $email = $_SESSION["email"];
-    $findIfCommentLikedOrDislikedByUser = "SELECT isLike FROM discussionRating WHERE discussionId = '$discussionId' AND email = '$email'";
-    $isLikeResult = mysqli_query($connection, $findIfCommentLikedOrDislikedByUser);
+    $findIfDiscussionLikedOrDislikedByUser = "SELECT isLike FROM discussionRating WHERE discussionId = '$discussionId' AND email = '$email'";
+    $isLikeResult = mysqli_query($connection, $findIfDiscussionLikedOrDislikedByUser);
     $isLikeResultRow = $isLikeResult->fetch_assoc();
     $isLike = $isLikeResultRow["isLike"];
     if($isLike == null)
@@ -122,6 +122,7 @@ while ($row = $result->fetch_assoc()) {
 
         $(this).siblings(".totalRating").text(newLikeCount);
         $(this).prop("disabled", true);
+        $(this).parent().attr("hasRated", "1");
         $(this).siblings(".dislikeButton").prop("disabled", false);
 
        $.get("../create/update_discussion_rating.php", {discussionId: discussionId, isLike: 1}, function(){
@@ -146,6 +147,7 @@ while ($row = $result->fetch_assoc()) {
 
         $(this).siblings(".totalRating").text(newLikeCount);
         $(this).prop("disabled", true);
+        $(this).parent().attr("hasRated", "1");
         $(this).siblings(".likeButton").prop("disabled", false);
 
         $.get("../create/update_discussion_rating.php", {discussionId: discussionId, isLike: 0}, function(){

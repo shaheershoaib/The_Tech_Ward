@@ -1,6 +1,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<?php
+<style>
 
+    .like-dislike-buttons{
+      position: relative;
+        top: 40px;
+        right: 20px;
+    }
+
+    button:hover{
+        cursor: pointer;
+    }
+
+</style>
+<?php
+session_start();
 
 use db\dbConnection;
 
@@ -18,11 +31,45 @@ $result = mysqli_query($connection, $commentQuery);
 $edit = false;
 
 while ($row = $result->fetch_assoc()) {
+    $commentId = $row["commentId"];
+    $getLikeCount = "SELECT COUNT(*) as likeCount FROM commentRating WHERE commentId = '$commentId' AND isLike = 1";
+    $likeCountResult = mysqli_query($connection, $getLikeCount);
+    $likeCountResultRow = $likeCountResult->fetch_assoc();
+    $likeCount = $likeCountResultRow["likeCount"];
+
+    $getDislikeCount = "SELECT COUNT(*) as dislikeCount FROM commentRating WHERE commentId = '$commentId' AND isLike = 0";
+    $dislikeCountResult = mysqli_query($connection, $getDislikeCount);
+    $dislikeCountResultRow = $dislikeCountResult->fetch_assoc();
+    $dislikeCount = $dislikeCountResultRow["dislikeCount"];
+
+    $totalRating = $likeCount - $dislikeCount;
+
+
+    /**  Find if user liked or disliked particular discussion  */
+    $email = $_SESSION["email"];
+    $findIfCommentLikedOrDislikedByUser = "SELECT isLike FROM commentRating WHERE commentId = '$commentId' AND email = '$email'";
+    $isLikeResult = mysqli_query($connection, $findIfCommentLikedOrDislikedByUser);
+    $isLikeResultRow = $isLikeResult->fetch_assoc();
+    $isLike = $isLikeResultRow["isLike"];
+    if($isLike == null)
+        $isLike = -1;
+
+
     echo "<div class = \"parent\" commentId = {$row['commentId']} discussionId = {$row['discussionId']}>";
+    ?>
+    <div class = "like-dislike-buttons" hasRated = <?php if($isLike != -1 ) echo "1"; else echo "0"; ?> >
+        <button class = "likeButton" <?php if($isLike == 1) echo "disabled"; ?> > &#8593</button>
+        <br>
+        <p class = "totalRating"> <?php echo $totalRating; ?></p>
+        <button class = "dislikeButton"  <?php if($isLike == 0) echo "disabled"; ?> >&#x2193</button>
+    </div>
+
+<?php
     echo "<p>By: {$row['fullname']} </p>";
     echo "<div class = \"child\">";
     echo "<p>{$row['body']}</p>";
-    session_start();
+
+
     if ((!empty($_SESSION['email']) && strcmp($row['commentEmail'], $_SESSION['email']) === 0) || !empty($_SESSION['admin'])) {
         echo "<button class = \"editButton\">Edit</button>";
         echo "<a href = \"../create/delete_comment.php?commentId={$row['commentId']}\"><button class = \"deleteButton\">Delete</button></a>";
@@ -58,6 +105,59 @@ while ($row = $result->fetch_assoc()) {
         parentDiv.append(form);
     });
 
+
+
+    $(".likeButton").on("click", function(){
+
+
+        const commentId =  $(this).parent().parent().attr("commentId");
+        const currentLikeCount =parseInt($(this).siblings(".totalRating").text());
+
+        const hasRated = $(this).parent().attr("hasRated");
+
+        var newLikeCount = 0;
+        if(hasRated == "1")
+            newLikeCount = currentLikeCount+2;
+        else newLikeCount = currentLikeCount+1;
+
+        $(this).siblings(".totalRating").text(newLikeCount);
+        $(this).prop("disabled", true);
+        $(this).parent().attr("hasRated", "1");
+        $(this).siblings(".dislikeButton").prop("disabled", false);
+
+        $.get("../create/update_comment_rating.php", {commentId: commentId, isLike: 1}, function(){
+
+        });
+
+
+
+
+    });
+
+
+    $(".dislikeButton").on("click", function(){
+
+        const commentId =  $(this).parent().parent().attr("commentId");
+        const currentLikeCount =parseInt($(this).siblings(".totalRating").text());
+        const hasRated = $(this).parent().attr("hasRated");
+        var newLikeCount = 0;
+        if(hasRated == "1")
+            newLikeCount = currentLikeCount-2;
+        else newLikeCount = currentLikeCount-1;
+
+        $(this).siblings(".totalRating").text(newLikeCount);
+        $(this).prop("disabled", true);
+        $(this).parent().attr("hasRated", "1");
+        $(this).siblings(".likeButton").prop("disabled", false);
+
+        $.get("../create/update_comment_rating.php", {commentId: commentId, isLike: 0}, function(){
+
+        });
+
+
+
+
+    });
 
 </script>
 
