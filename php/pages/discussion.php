@@ -64,7 +64,7 @@ else{
     
 
 
-    $ds = "SELECT title, fullname, description FROM discussion, user WHERE discussion.email = user.email AND discussionId = '$discussionId'; ";
+    $ds = "SELECT title, fullname, description, image,  contentType FROM discussion, user WHERE discussion.email = user.email AND discussionId = '$discussionId'; ";
     $result = mysqli_query($connection, $ds);
     
    echo "<div class = \"dis\">";
@@ -72,11 +72,12 @@ else{
 
         
         echo"<h1>".$row["title"]."</h1>";
-     
+       
         echo"<h3>By: ".$row["fullname"]."</h3>";
         echo "<br><br>";
-        if($row["image"] !== null){
-            echo '<img src="data:image/'.$row["contentType"].';base64,'.base64_encode($row["image"]).'"/>';
+        if($row["image"] !== null && $row["contentType"] !== null){
+         
+            echo '<img width = 350 height = 350  src="data:image/'.$row["contentType"].';base64,'.base64_encode($row["image"]).'"/> <br><br>';
         }
         echo "<h4>".$row["description"]."</h4>";
     echo "</div>";
