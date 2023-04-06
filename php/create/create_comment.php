@@ -34,7 +34,7 @@ else
                    
             try
             {
-            $sql = "INSERT INTO comment(discussionId, body, email, likeCount) VALUES('$discussionId', '$body', '$email', 0);";
+            $sql = "INSERT INTO comment(discussionId, body, email) VALUES('$discussionId', '$body', '$email');";
             $result = mysqli_query($connection, $sql);
             }
             catch(Exception $e)

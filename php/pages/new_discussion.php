@@ -63,7 +63,7 @@ unset($_SESSION['visited']);
 <div class = "wrapper">
     <div class="lform">
         <h1>Create a Discussion</h1>
-        <form align="center" method="post" action="../create/create_new_discussion.php">
+        <form align="center" method="post" action="../create/create_new_discussion.php" enctype="multipart/form-data">
             <label for="title">Title:</label>
             <input type="text" name="title"  required id="title">
             <br><br>
@@ -71,7 +71,7 @@ unset($_SESSION['visited']);
             <textarea name="desc" required id="description"></textarea>
             <br><br>
             <label for="image">Upload Image (optional) : </label>
-            <input type="file" id="image" name="image" accept="image/png, image/jpeg" enctype="multipart/form-data">
+            <input type="file" id="image" name="image">
          <br><br>
             <button type="reset">clear form</button>
             <button type="submit">post</button>

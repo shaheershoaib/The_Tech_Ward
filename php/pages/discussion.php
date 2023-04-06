@@ -50,6 +50,7 @@ require_once '../db/dbConnection.php';
 $dbConnection = new dbConnection();
 $connection = $dbConnection->getConnection();
 $error = $dbConnection->getError();
+$flag = 0;
 if($error != null){
   $output = "<p>Unable to connect to database!</p>";
   exit($output);
@@ -60,6 +61,9 @@ else{
     $discussionId = $params['discussionId'];
 
 
+    
+
+
     $ds = "SELECT title, fullname, description FROM discussion, user WHERE discussion.email = user.email AND discussionId = '$discussionId'; ";
     $result = mysqli_query($connection, $ds);
     
@@ -68,8 +72,12 @@ else{
 
         
         echo"<h1>".$row["title"]."</h1>";
+     
         echo"<h3>By: ".$row["fullname"]."</h3>";
         echo "<br><br>";
+        if($row["image"] !== null){
+            echo '<img src="data:image/'.$row["contentType"].';base64,'.base64_encode($row["image"]).'"/>';
+        }
         echo "<h4>".$row["description"]."</h4>";
     echo "</div>";
 

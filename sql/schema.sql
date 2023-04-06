@@ -1,8 +1,8 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-CREATE DATABASE project;
-USE project;
+-- CREATE DATABASE project;
+-- USE project;
 
 
 
@@ -20,13 +20,12 @@ CREATE TABLE `user` (
 
 
 CREATE TABLE `discussion` (
- 
-  
-  `discussionId` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+ `discussionId` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` varchar(1000) NOT NULL,
-  `image` BLOB,
   `email` varchar(255) NOT NULL,
+  `image` BLOB,
+  `contentType` varchar(255),
   FOREIGN KEY (email) REFERENCES user(email)  ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -58,3 +57,8 @@ CREATE TABLE commentRating(
     FOREIGN KEY (commentId) REFERENCES comment(commentId)  ON DELETE CASCADE,
     FOREIGN KEY (email) REFERENCES user(email)  ON DELETE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
