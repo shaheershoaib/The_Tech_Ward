@@ -10,7 +10,7 @@ CREATE TABLE `user` (
  
   
   `fullname` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL PRIMARY KEY,
+  `email` varchar(255) PRIMARY KEY,
   `password` varchar(255) NOT NULL,
   `pfp` BLOB,
   `admin` boolean
@@ -20,7 +20,7 @@ CREATE TABLE `user` (
 
 
 CREATE TABLE `discussion` (
- `discussionId` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+ `discussionId` int AUTO_INCREMENT PRIMARY KEY,
   `title` varchar(255) NOT NULL,
   `description` varchar(1000) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -41,21 +41,22 @@ FOREIGN KEY (email) REFERENCES user(email)  ON DELETE CASCADE
 
 
 CREATE TABLE discussionRating(
-    `discussionRatingId` int AUTO_INCREMENT PRIMARY KEY,
-    `discussionId` int NOT NULL,
+    `discussionId` int,
     `email` varchar(255) NOT NULL,
     `isLike` int NOT NULL, /* isLike = 1 if its a like, else 0 */
     FOREIGN KEY (discussionId) REFERENCES discussion(discussionId)  ON DELETE CASCADE,
-    FOREIGN KEY (email) REFERENCES user(email)  ON DELETE CASCADE
+    FOREIGN KEY (email) REFERENCES user(email)  ON DELETE CASCADE,
+    PRIMARY KEY (discussionId, email)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE commentRating(
-    `commentRatingId` int AUTO_INCREMENT PRIMARY KEY,
-    `commentId` int NOT NULL,
-    `email` varchar(255) NOT NULL,
+
+    `commentId` int,
+    `email` varchar(255),
     `isLike` int NOT NULL, /* isLike = 1 if its a like, else 0 */
     FOREIGN KEY (commentId) REFERENCES comment(commentId)  ON DELETE CASCADE,
-    FOREIGN KEY (email) REFERENCES user(email)  ON DELETE CASCADE
+    FOREIGN KEY (email) REFERENCES user(email)  ON DELETE CASCADE,
+    PRIMARY KEY(commentId, email)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
