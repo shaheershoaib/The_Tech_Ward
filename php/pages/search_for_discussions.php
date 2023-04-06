@@ -77,7 +77,7 @@ while ($row = $result->fetch_assoc()) {
         $isLike = -1;
     ?>
 <div class = "discussion" discussionId = <?php echo $discussionId ?> >
-    <div class = "like-dislike-buttons">
+    <div class = "like-dislike-buttons" hasRated = <?php if($isLike != -1 ) echo "1"; else echo "0"; ?> >
     <button class = "likeButton" <?php if($isLike == 1) echo "disabled"; ?> > &#8593</button>
     <br>
         <p class = "totalRating"><?php echo $totalRating; ?></p>
@@ -110,36 +110,50 @@ while ($row = $result->fetch_assoc()) {
     $(".likeButton").on("click", function(){
 
 
-        const discussionId =  $(this).parent().attr("discussionId");
+        const discussionId =  $(this).parent().parent().attr("discussionId");
       const currentLikeCount =parseInt($(this).siblings(".totalRating").text());
 
-       /*
-       $.get("../create/update_discussion_rating.php", {discussionId: discussionId, isLike: 1}, function(){
-           $(this).siblings.(".likeCount").val(currentLikeCount+1);
-       });
-       */
+        const hasRated = $(this).parent().attr("hasRated");
 
-        $(this).siblings(".totalRating").text(currentLikeCount+1);
+        var newLikeCount = 0;
+        if(hasRated == "1")
+            newLikeCount = currentLikeCount+2;
+        else newLikeCount = currentLikeCount+1;
+
+        $(this).siblings(".totalRating").text(newLikeCount);
         $(this).prop("disabled", true);
         $(this).siblings(".dislikeButton").prop("disabled", false);
+
+       $.get("../create/update_discussion_rating.php", {discussionId: discussionId, isLike: 1}, function(){
+
+       });
+
+
+
 
     });
 
 
     $(".dislikeButton").on("click", function(){
 
-        const discussionId =  $(this).parent().attr("discussionId");
+        const discussionId =  $(this).parent().parent().attr("discussionId");
         const currentLikeCount =parseInt($(this).siblings(".totalRating").text());
+        const hasRated = $(this).parent().attr("hasRated");
+        var newLikeCount = 0;
+        if(hasRated == "1")
+            newLikeCount = currentLikeCount-2;
+        else newLikeCount = currentLikeCount-1;
 
-        /*
-        $.get("../create/update_discussion_rating.php", {discussionId: discussionId, isLike: 1}, function(){
-            $(this).siblings.(".likeCount").val(currentLikeCount+1);
-        });
-        */
-
-        $(this).siblings(".totalRating").text(currentLikeCount-1);
+        $(this).siblings(".totalRating").text(newLikeCount);
         $(this).prop("disabled", true);
         $(this).siblings(".likeButton").prop("disabled", false);
+
+        $.get("../create/update_discussion_rating.php", {discussionId: discussionId, isLike: 0}, function(){
+
+        });
+
+
+
 
 
     });
