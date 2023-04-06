@@ -1,16 +1,29 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 
-    .like-dislike-buttons{
-      position: relative;
-        top: 40px;
-        right: 20px;
+    .like-dislike-buttons {
+        position: absolute;
     }
+
+    .by, .child, textarea {
+margin-left: 50px;
+    }
+
+
 
     button:hover{
         cursor: pointer;
     }
 
+    .parent {
+        position: relative;
+        margin-top: 20px;
+    }
+
+
+
+
+    }
 </style>
 <?php
 session_start();
@@ -65,7 +78,7 @@ while ($row = $result->fetch_assoc()) {
     </div>
 
 <?php
-    echo "<p>By: {$row['fullname']} </p>";
+    echo "<p class = \"by\" >By: {$row['fullname']} </p>";
     echo "<div class = \"child\">";
     echo "<p>{$row['body']}</p>";
 
