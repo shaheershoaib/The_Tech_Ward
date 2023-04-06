@@ -71,7 +71,7 @@ else
            //   $flag = 0;
            // }
      
-           if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif" ) {
+           if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif" && $imageFileType != "jpeg" ) {
            echo "<br>Cannot support the uploaded file format.";
            $flag = 0;
           }
@@ -123,6 +123,7 @@ else
      mysqli_stmt_bind_param($stmt, "sssbs", $email, $title, $desc,$null, $imageFileType);
      mysqli_stmt_send_long_data($stmt, 3, $imagedata);
      $resultt = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
+     header("Location: ../pages/show_discussions.php");
      
      }
      
@@ -234,6 +235,7 @@ else
             {
             $sql = "INSERT INTO discussion(email, title, description) VALUES('$email', '$title', '$desc');";
             $result = mysqli_query($connection, $sql);
+            header("Location: ../pages/show_discussions.php");
             }
             catch(Exception $e)
             {
@@ -245,7 +247,7 @@ else
         
         }
     
-        header("Location: ../pages/show_discussions.php");
+      
 
     
     mysqli_close($connection);
