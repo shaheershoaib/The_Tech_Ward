@@ -1,5 +1,4 @@
-html,
-body {
+html, body {
     padding: 0;
     margin: 0;
     height: 100%;
@@ -9,7 +8,6 @@ body {
 .logo {
     text-align: center;
     display: block;
-
 
 }
 body{
@@ -62,4 +60,23 @@ footer {
     background-color: #90EE90;
     padding: 0.5em;
     margin-bottom: 0em;
+}
+
+
+a:link, a:visited {
+
+    color: black;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bolder;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+a:hover {
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
 }
