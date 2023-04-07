@@ -95,7 +95,7 @@ else{
 <div class = "wrapper">
     <div class="lform">
         <h1>Edit Your Discussion</h1>
-        <form align="center" method="get" action="../create/edit_discussion.php">
+        <form align="center" method="get" action="../create/edit_discussion.php" enctype="multipart/form-data">
             <label for="title">Title:</label>
             <input type="text" name="title"  required id="title" value = "<?php echo $row["title"];?>" >
             <br><br>
@@ -103,7 +103,7 @@ else{
             <textarea name="desc" required id="description"><?php echo $row["description"]; ?></textarea>
             <br><br>
             <label for="image">Upload Image (optional) : </label>
-            <input type="file" id="image" name="image" accept="image/png, image/jpeg" enctype="multipart/form-data">
+            <input type="file" id="image" name="image">
             <input type="hidden" name="discussionId" value="<?php echo $discussionId; ?>">
          <br><br>
             <button type="reset">Clear Discussion</button>

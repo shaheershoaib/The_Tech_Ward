@@ -34,8 +34,9 @@ unset($_SESSION['visited']);
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 30%;
+  width: 20%;
   height: 30%;
+  border-radius: 50%;
 }
   </style>
 <body>
