@@ -6,6 +6,7 @@ if(empty($_SESSION['email']))
     header("Location: ../../html/login.html");
     exit();
 }
+
 else{
 
    if(empty($_SESSION['prev_page']))

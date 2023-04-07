@@ -28,15 +28,6 @@
 use db\dbConnection;
 
 session_start();
-if (empty($_SESSION['visited'])) {
-    $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
-    header("Location: ../login/logincheck.php");
-} else {
-    unset($_SESSION['visited']);
-}
-
-
-
 
 
 require_once '../db/dbConnection.php';
@@ -76,16 +67,22 @@ while ($row = $result->fetch_assoc()) {
     if($isLike == null)
         $isLike = -1;
     ?>
+
+
 <div class = "discussion" discussionId = <?php echo $discussionId ?> >
+
+    <?php if(!empty($_SESSION["email"])) { ?>
+
     <div class = "like-dislike-buttons" hasRated = <?php if($isLike != -1 ) echo "1"; else echo "0"; ?> >
     <button class = "likeButton" <?php if($isLike == 1) echo "disabled"; ?> > &#8593</button>
     <br>
         <p class = "totalRating"><?php echo $totalRating; ?></p>
     <button class = "dislikeButton"  <?php if($isLike == 0) echo "disabled"; ?> >&#x2193</button>
     </div>
+
+    <?php } ?>
 <?php
     echo "<a href = discussion.php?discussionId=".$discussionId."> <h3> Title: ".$row["title"]." </h3> <br> By:".$row["fullname"]."</a>";
-    session_start();
     if($_SESSION["admin"] || $row["email"] == $_SESSION['email']) {
         ?>
     <div class = "edit-delete-buttons">
@@ -107,7 +104,14 @@ while ($row = $result->fetch_assoc()) {
 
 <script>
 
+
+
+
     $(".likeButton").on("click", function(){
+
+
+
+
 
 
         const discussionId =  $(this).parent().parent().attr("discussionId");
@@ -130,12 +134,14 @@ while ($row = $result->fetch_assoc()) {
        });
 
 
-
-
     });
 
 
+
     $(".dislikeButton").on("click", function(){
+
+
+
 
         const discussionId =  $(this).parent().parent().attr("discussionId");
         const currentLikeCount =parseInt($(this).siblings(".totalRating").text());
@@ -153,8 +159,6 @@ while ($row = $result->fetch_assoc()) {
         $.get("../create/update_discussion_rating.php", {discussionId: discussionId, isLike: 0}, function(){
 
         });
-
-
 
 
 

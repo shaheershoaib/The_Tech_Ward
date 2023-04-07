@@ -70,12 +70,19 @@ while ($row = $result->fetch_assoc()) {
 
     echo "<div class = \"parent\" commentId = {$row['commentId']} discussionId = {$row['discussionId']}>";
     ?>
+    <?php session_start(); ?>
+
+
+        <?php if( !empty($_SESSION["email"]) ){ ?>
+
     <div class = "like-dislike-buttons" hasRated = <?php if($isLike != -1 ) echo "1"; else echo "0"; ?> >
         <button class = "likeButton" <?php if($isLike == 1) echo "disabled"; ?> > &#8593</button>
         <br>
         <p class = "totalRating"> <?php echo $totalRating; ?></p>
         <button class = "dislikeButton"  <?php if($isLike == 0) echo "disabled"; ?> >&#x2193</button>
     </div>
+
+            <?php } ?>
 
 <?php
     echo "<p class = \"by\" >By: {$row['fullname']} </p>";
@@ -97,6 +104,9 @@ while ($row = $result->fetch_assoc()) {
 ?>
 
 <script>
+    <?php session_start(); ?>
+
+
     $(".editButton").on("click", function(){
         const parentDiv = $(this).parent().parent();
         const childDiv = $(this).parent();
@@ -149,6 +159,7 @@ while ($row = $result->fetch_assoc()) {
 
 
     $(".dislikeButton").on("click", function(){
+
 
         const commentId =  $(this).parent().parent().attr("commentId");
         const currentLikeCount =parseInt($(this).siblings(".totalRating").text());

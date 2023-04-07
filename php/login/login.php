@@ -23,14 +23,21 @@ else
     $email = $_POST["email"];
     $password = md5($_POST["password"]);
 
-     $ds = "SELECT email, admin FROM user WHERE email = '$email' and password ='$password';";
+     $ds = "SELECT email, admin, disabled FROM user WHERE email = '$email' and password ='$password';";
      $result = mysqli_query($connection, $ds);
     if ($row = mysqli_fetch_assoc($result)) {
+
 
         session_start();
         session_destroy(); // Destroy any session data previously just in case
         session_start(); //Start a new session
 
+        if($row["disabled"] == 1)
+        {
+            echo $row["disabled"];
+            header("Location: ../pages/disabledMessage.php");
+            exit();
+        }
 
       $_SESSION["email"] = $email;
 
@@ -38,6 +45,7 @@ else
       {
         $_SESSION['admin'] = 1;
         header("Location: ../pages/admin/admin.php");
+
 
       }
       else header("Location: logincheck.php");

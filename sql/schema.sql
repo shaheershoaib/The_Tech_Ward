@@ -14,6 +14,7 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL,
   `pfp` BLOB,
   `contentType` varchar(255),
+    `disabled` INT NOT NULL DEFAULT 0,
   `admin` boolean
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
