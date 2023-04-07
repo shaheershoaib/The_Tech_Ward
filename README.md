@@ -15,15 +15,9 @@ Shaheer Shoaib
   
 ### Overview
  <hr>
-The project is under construction
- <br>
- <br>
- 
- <p align="center">
 
-<img src="https://media1.giphy.com/media/8KWG2s3MR6SXbjccBO/giphy.gif" width = 400 height = 400 title = "https://media1.giphy.com/media/8KWG2s3MR6SXbjccBO/giphy.gif">
-   
- </p>
+ 
+
  
 The Tech Ward website is a comparable online discussion platform to HackerNews. The website allows users to participate in technological discussions. A user can register, make new posts, react to other threads, and rate the threads made by others. A guest (un-registered) user may just read the threads. The user will be able to filter the threads depending on various search filters such as programming, gadgets, machine learning, and so on.
 
@@ -39,7 +33,7 @@ The Tech Ward website is a comparable online discussion platform to HackerNews. 
 | Proposal | decided on project requirements, ready to begin development | ✔️|
 | Client-side experience | layout documented, Organization of pages, Logic process, Discusiion regarding the design and style of all pages, client-side validation and security, static design and styles of pages, examples of each page type |  ✔️|
 | Minimal core functionality | server side implementation, running on server, server side security, discussion thread storage in database, asynchronous update, complete database functionality, operational core functional components |  ✔️|
-| The full site|all the functional and non functional requirements are fully operational| ❌|
+| The full site|all the functional and non functional requirements are fully operational| ✔️|
 
 
 
