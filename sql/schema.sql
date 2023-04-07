@@ -13,6 +13,7 @@ CREATE TABLE `user` (
   `email` varchar(255) PRIMARY KEY,
   `password` varchar(255) NOT NULL,
   `pfp` BLOB,
+  `contentType` varchar(255),
   `admin` boolean
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

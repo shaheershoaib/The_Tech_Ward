@@ -42,7 +42,7 @@
     </div>
 
     <div class="lform">
-        <form align="center" method="post" action="../php/create/newuser.php" id = "mainform">
+        <form align="center" method="post" action="../php/create/newuser.php" id = "mainform" enctype="multipart/form-data">
 
 
 
@@ -60,6 +60,9 @@
             <label for="cpass">Confirm Password: </label>
             <input type="password" name="cpassword" id="cpass" required>
             <br><br>
+            <label for="image">Upload Profile Photo (optional) : </label>
+            <input type="file" id="image" name="image">
+         <br><br>
             <button type="submit">SIGN IN</button>
         </form>
     </div>

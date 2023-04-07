@@ -29,6 +29,15 @@ unset($_SESSION['visited']);
     <link rel="stylesheet" href="../../css/project.css">
     <link rel="stylesheet" href="../../css/nav.css">
 </head>
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  height: 30%;
+}
+  </style>
 <body>
 <nav>
 
@@ -80,7 +89,7 @@ else
     $email = $_SESSION["email"];
     
 
-     $ds = "SELECT fullname, email  FROM user where email = '$email' ; ";
+     $ds = "SELECT fullname, email, pfp, contentType  FROM user where email = '$email' ; ";
      $result = mysqli_query($connection, $ds);
 
     if ($row = mysqli_fetch_assoc($result)) {
@@ -88,8 +97,14 @@ else
       echo "<br><br><br><br><br><br>
 
       <h1 align = 'center'> Welcome ".$row["fullname"]." </h1> <br>
-      <h2 align = 'center'> Email: " .$row["email"]. "</h2> <br>".
-      "<a href='../create/deleteuser.php'>Delete Account </a> <br><br>".
+      <h2 align = 'center'> Email: " .$row["email"]. "</h2> <br>";
+
+      if($row["pfp"] !== null && $row["contentType"] !== null){
+         
+        echo '<img  class="center"  width = 350 height = 350  src="data:image/'.$row["contentType"].';base64,'.base64_encode($row["pfp"]).'"/> <br><br><br><br>';
+    }
+
+      echo "<a href='../create/deleteuser.php'>Delete Account </a> <br><br>".
       "<a href='updatepassword.php'>Update Password</a> <br><br>".
       "<a href = 'my_discussions.php'>My Discussions</a>";
         
