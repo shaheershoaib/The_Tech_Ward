@@ -42,9 +42,12 @@ while($row = $result->fetch_assoc())
     echo "<p> Email: ".$row["email"]."</p>";
    // echo "<button href = \"toggleUser.php?email=".$row["email"]."&disable=1\">Disable</button>";
     ?>
+
+<?php if($email != "admin@admin.com"){ ?>
         <div email = <?php echo $email; ?> >
      <button class = "disableButton"  <?php if($disabled == 1) echo "disabled"; ?>>Disable</button>
      <button class = "enableButton" <?php if($disabled == 0) echo "disabled"; ?> >Enable</button>
+            <?php } ?>
 <?php
     echo "</div>";
     echo "<br>";

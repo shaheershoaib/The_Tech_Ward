@@ -36,26 +36,25 @@ $connection = $dbConnection->getConnection();
 $error = $dbConnection->getError();
 
 $search = $_GET["search"];
+$orderby = $_GET["orderby"];
 
 
-$sql = "SELECT discussionId, title, fullname, user.email FROM discussion, user WHERE discussion.email = user.email AND title LIKE '$search%'";
+
+//if($orderby == "latest")
+    $sql = "SELECT discussionId, title, fullname, user.email FROM discussion, user WHERE discussion.email = user.email AND title LIKE '$search%' ORDER BY discussionId DESC";
+//else $sql = " (SELECT discussionId, title, fullname, user.email FROM discussion, user WHERE discussion.email = user.email AND title LIKE '$search%') LEFT OUTER JOIN (SELECT ) "
 
 $result = mysqli_query($connection, $sql);
 while ($row = $result->fetch_assoc()) {
 
     /**  Get likes of given discussion Id*/
     $discussionId = $row["discussionId"];
-    $getLikeCount = "SELECT COUNT(*) as likeCount FROM discussionRating WHERE discussionId = '$discussionId' AND isLike = 1";
+    $getLikeCount = "SELECT SUM(isLike) as likeCount FROM discussionRating WHERE discussionId = '$discussionId'";
     $likeCountResult = mysqli_query($connection, $getLikeCount);
     $likeCountResultRow = $likeCountResult->fetch_assoc();
-    $likeCount = $likeCountResultRow["likeCount"];
-
-    $getDislikeCount = "SELECT COUNT(*) as dislikeCount FROM discussionRating WHERE discussionId = '$discussionId' AND isLike = 0";
-    $dislikeCountResult = mysqli_query($connection, $getDislikeCount);
-    $dislikeCountResultRow = $dislikeCountResult->fetch_assoc();
-    $dislikeCount = $dislikeCountResultRow["dislikeCount"];
-
-    $totalRating = $likeCount - $dislikeCount;
+    $totalRating = $likeCountResultRow["likeCount"];
+    if($totalRating == null)
+        $totalRating = 0;
 
 
     /**  Find if user liked or disliked particular discussion  */
@@ -65,7 +64,7 @@ while ($row = $result->fetch_assoc()) {
     $isLikeResultRow = $isLikeResult->fetch_assoc();
     $isLike = $isLikeResultRow["isLike"];
     if($isLike == null)
-        $isLike = -1;
+        $isLike = 0;
     ?>
 
 
@@ -73,11 +72,11 @@ while ($row = $result->fetch_assoc()) {
 
     <?php if(!empty($_SESSION["email"])) { ?>
 
-    <div class = "like-dislike-buttons" hasRated = <?php if($isLike != -1 ) echo "1"; else echo "0"; ?> >
+    <div class = "like-dislike-buttons" hasRated = <?php if($isLike != 0 ) echo "1"; else echo "0"; ?> >
     <button class = "likeButton" <?php if($isLike == 1) echo "disabled"; ?> > &#8593</button>
     <br>
         <p class = "totalRating"><?php echo $totalRating; ?></p>
-    <button class = "dislikeButton"  <?php if($isLike == 0) echo "disabled"; ?> >&#x2193</button>
+    <button class = "dislikeButton"  <?php if($isLike == -1) echo "disabled"; ?> >&#x2193</button>
     </div>
 
     <?php } ?>
@@ -156,7 +155,7 @@ while ($row = $result->fetch_assoc()) {
         $(this).parent().attr("hasRated", "1");
         $(this).siblings(".likeButton").prop("disabled", false);
 
-        $.get("../create/update_discussion_rating.php", {discussionId: discussionId, isLike: 0}, function(){
+        $.get("../create/update_discussion_rating.php", {discussionId: discussionId, isLike: -1}, function(){
 
         });
 
