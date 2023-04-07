@@ -42,6 +42,10 @@
 
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 use db\dbConnection;
 
 require_once '../db/dbConnection.php';
@@ -64,7 +68,7 @@ else{
     
 
 
-    $ds = "SELECT title, fullname, description, image,  contentType FROM discussion, user WHERE discussion.email = user.email AND discussionId = '$discussionId'; ";
+    $ds = "SELECT title, fullname, description, image, discussion.contentType FROM discussion, user WHERE discussion.email = user.email AND discussionId = '$discussionId'; ";
     $result = mysqli_query($connection, $ds);
     
    echo "<div class = \"dis\">";
