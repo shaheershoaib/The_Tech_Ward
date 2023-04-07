@@ -87,6 +87,13 @@ footer{
   <input name = "search" id = "searchBar" type = "search" placeholder = "Search For Discussions..." style = "width: 500px" onkeydown="displaySearchResultsOnEnterKeyPress(event)">
   <button id = "searchButton" onclick = "displaySearchResults()">Search</button>
 
+  <br>
+  <label>Order discussions by: </label>
+  <select id = "orderby">
+      <option>Latest</option>
+      <option>Popularity</option>
+  </select>
+
 
 
   <div id = "discussionList">
@@ -114,7 +121,8 @@ footer{
 
 
         const searchQuery = document.getElementById("searchBar").value;
-        $.get("search_for_discussions.php", {search: searchQuery}, function(data){
+        const orderby = document.getElementById("orderby").value;
+        $.get("search_for_discussions.php", {search: searchQuery, orderby: orderby}, function(data){
             const searchResultsDiv = $("#discussionList");
             searchResultsDiv.html(data); // We are overwriting the previous changes/data
         });
@@ -123,7 +131,8 @@ footer{
 
 
     function updateSearchResults(){
-        $.get("search_for_discussions.php", {search: prevSearchQuery}, function(data){
+        const orderby = document.getElementById("orderby").value;
+        $.get("search_for_discussions.php", {search: prevSearchQuery, orderby: orderby}, function(data){
             const searchResultsDiv = $("#discussionList");
             searchResultsDiv.html(data); // We are overwriting the previous changes/data
         });
@@ -156,6 +165,11 @@ footer{
     setInterval(function(){
             updateSearchResults();
     }, 5000);
+
+
+    $("#orderby").on("change", function(){
+        updateSearchResults();
+    });
 
 
 </script>

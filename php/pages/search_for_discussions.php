@@ -39,10 +39,27 @@ $search = $_GET["search"];
 $orderby = $_GET["orderby"];
 
 
+error_reporting(E_ALL);
 
-//if($orderby == "latest")
+// Show errors on screen
+ini_set('display_errors', 1);
+
+
+if($orderby == "Latest")
     $sql = "SELECT discussionId, title, fullname, user.email FROM discussion, user WHERE discussion.email = user.email AND title LIKE '$search%' ORDER BY discussionId DESC";
-//else $sql = " (SELECT discussionId, title, fullname, user.email FROM discussion, user WHERE discussion.email = user.email AND title LIKE '$search%') LEFT OUTER JOIN (SELECT ) "
+else $sql = "SELECT r.discussionId, r.title, r.fullname, r.email, s.rating
+FROM (
+    SELECT discussionId, title, fullname, user.email
+    FROM discussion, user
+    WHERE discussion.email = user.email AND title LIKE '$search%'
+) AS r
+LEFT OUTER JOIN (
+    SELECT discussionId, SUM(isLike) as rating
+    FROM discussionRating
+    GROUP BY discussionId
+) AS s ON r.discussionId = s.discussionId
+ORDER BY s.rating DESC";
+
 
 $result = mysqli_query($connection, $sql);
 while ($row = $result->fetch_assoc()) {
