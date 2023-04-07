@@ -34,7 +34,7 @@ else{
             //Or, if this is the admin
             
             if($_FILES['image']['error'] === UPLOAD_ERR_OK ) {
-                echo "sithara";
+                
         //         $dir = "pp/";
         //          $file = $dir . basename($_FILES["image"]["name"]);
         //          $flag = 1;
