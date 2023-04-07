@@ -53,11 +53,21 @@ unset($_SESSION['visited']);
 </header> 
 <br><br><br><br><br><br><br><br>
 
-<h1> You have admin privilages</h1>
+<h1>Welcome, Admin</h1>
+<h2> You have administrative privileges</h2>
+<h2>You may: </h2>
+<ul>
+    <li>
+        <h3> &nbsp; &nbsp; &nbsp;Search for user by name, email, and post </h3>
+    </li>
+    <li>
+        <h3> &nbsp;&nbsp;&nbsp;&nbsp; Edit and delete any discussion and comment </h3>
+    </li>
+    <li>
+        <h3> &nbsp;&nbsp;&nbsp;&nbsp; Disable and enable users</h3>
+    </li>
+</ul>
 <br>
-<h2> Admin login check is done and non admins cannot acesses this page.</h2>
-<br>
-<h3> All other admin privilages will be implemented in next milstone.</h3>
 
 
     </div>

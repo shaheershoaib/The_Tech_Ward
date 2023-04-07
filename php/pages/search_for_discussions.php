@@ -98,7 +98,7 @@ while ($row = $result->fetch_assoc()) {
 
     <?php } ?>
 <?php
-    echo "<a href = discussion.php?discussionId=".$discussionId."> <h3> Title: ".$row["title"]." </h3> <br> By:".$row["fullname"]."</a>";
+    echo "<a href = discussion.php?discussionId=".$discussionId."> <h2> <strong>".$row["title"]."</strong> </h2> <br> By:".$row["fullname"]."</a>";
     if($_SESSION["admin"] || $row["email"] == $_SESSION['email']) {
         ?>
     <div class = "edit-delete-buttons">

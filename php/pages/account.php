@@ -97,8 +97,8 @@ else
        
       echo "<br><br><br><br><br><br>
 
-      <h1 align = 'center'> Welcome ".$row["fullname"]." </h1> <br>
-      <h2 align = 'center'> Email: " .$row["email"]. "</h2> <br>";
+      <h1 align = 'center'> Welcome, ".$row["fullname"]." </h1> <br>
+      <h2 align = 'center'> " .$row["email"]. "</h2> <br>";
 
       if($row["pfp"] !== null && $row["contentType"] !== null){
          
