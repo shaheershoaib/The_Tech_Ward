@@ -63,20 +63,3 @@ footer {
 }
 
 
-a:link, a:visited {
-
-    color: black;
-    padding: 14px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-weight: bolder;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-
-a:hover {
-    background-color: black;
-    color: white;
-    font-family: 'Courier New', Courier, monospace;
-}
