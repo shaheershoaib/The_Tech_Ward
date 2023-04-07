@@ -15,6 +15,7 @@ unset($_SESSION['visited']);
 
 <?php
 require_once '../db/dbConnection.php';
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 $dbConnection = new dbConnection();

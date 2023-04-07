@@ -1,0 +1,56 @@
+html,
+body {
+    padding: 1em;
+    margin: 0;
+    height: 100%;
+   
+}
+body{
+    background-image: url("https://images.unsplash.com/photo-1614850523060-8da1d56ae167");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#homepage-wrapper{
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+#login-side{
+  
+    float: right;
+   
+    
+}
+#top{
+    text-align: right;
+}
+
+
+a:link, a:visited {
+   
+    color: black;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bolder;
+    font-family: 'Courier New', Courier, monospace;
+}
+  
+  
+  a:hover {
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+    
+  #signup-side{
+    float: left;
+}
+#s{
+   font-family: 'Courier New', Courier, monospace;
+   font-size:xx-large;
+}
+
+

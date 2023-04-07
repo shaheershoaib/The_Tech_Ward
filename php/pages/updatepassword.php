@@ -93,7 +93,7 @@ unset($_SESSION['visited']);
             <input type="password" name="pass"  required id="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                 title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
             <br><br>
-            <label for="cpass">New Password:</label>
+            <label for="cpass">Confirm Password:</label>
             <input type="password" name="cpass"  required id="cpass">
          <br><br>
             <button type="reset">Clear</button>
