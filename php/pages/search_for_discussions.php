@@ -39,10 +39,6 @@ $search = $_GET["search"];
 $orderby = $_GET["orderby"];
 
 
-error_reporting(E_ALL);
-
-// Show errors on screen
-ini_set('display_errors', 1);
 
 
 if($orderby == "Latest")
