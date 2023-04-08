@@ -5,7 +5,7 @@ use db\dbConnection;
 require_once '../db/dbConnection.php';
 
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
+if($_SERVER['REQUEST_METHOD'] == "POST") {
     if(empty($_POST["title"]) || empty($_POST["desc"]))
         die("Input fields are missing");
 
