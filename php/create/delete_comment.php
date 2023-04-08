@@ -7,6 +7,13 @@ require_once '../db/dbConnection.php';
 
 session_start();
 if(empty($_SESSION['visited'])){
+    if($_SERVER["REQUEST_METHOD"]!="POST")
+    {
+        echo "<p> Bad Request </p>";
+        exit();
+    }
+
+    $_SESSION["commentId"] = $_POST["commentId"];
 $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
 header("Location: ../login/logincheck.php"); 
 }
@@ -23,10 +30,12 @@ if($error != null){
 
 else{
  //Check if discussion belongs to the user
-    session_start();
-    parse_str($_SERVER['QUERY_STRING'], $params);
-    $commentId = $params['commentId'];
+
+
+    $commentId = $_SESSION['commentId'];
+    unset($_SESSION["commentId"]);
     $email = $_SESSION['email'];
+
     $sql = "SELECT email, discussionId FROM comment WHERE commentId = '$commentId'";
     $result = mysqli_query($connection, $sql);
     $row = $result->fetch_assoc();
@@ -35,6 +44,7 @@ else{
         $deleteStmt = "DELETE FROM comment WHERE commentId = '$commentId'";
         $deleteResult = mysqli_query($connection, $deleteStmt);
         header("Location: ../pages/discussion.php?discussionId=".$row["discussionId"]);
+
                 
     }
     

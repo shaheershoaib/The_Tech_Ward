@@ -100,14 +100,24 @@ footer{
 
 while ($row = $result->fetch_assoc()) {
 
+
+
     echo "<a href='discussion.php?discussionId=".$row["discussionId"]."'><h3>Title: ".$row["title"]."</h3><br>User: ".$row["fullname"]."</a>";
-    echo "<a href='../create/delete_discussion.php?discussionId=".$row["discussionId"]."'><button>Delete</button></a>";
-    echo "<a href='edit_my_discussion.php?discussionId=".$row["discussionId"]."'><button>Edit</button></a>";
-    echo "<br><br>";
+    ?>
+    <form method = "post" action = "../create/delete_discussion.php">
+        <input type = "hidden" name = "discussionId" value = <?php echo $row["discussionId"]; ?> >
+        <button>Delete</button>
+    </form>
 
-}
+    <form method = "post" action = "edit_my_discussion.php">
+        <input type = "hidden" name = "discussionId" value = <?php echo $row["discussionId"]; ?> >
+        <button>Edit</button>
+    </form>
+    <br><br>
 
-?>
+<?php } ?>
+
+
 
          </div>
 

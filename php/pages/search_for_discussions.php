@@ -98,11 +98,18 @@ while ($row = $result->fetch_assoc()) {
     if($_SESSION["admin"] || $row["email"] == $_SESSION['email']) {
         ?>
     <div class = "edit-delete-buttons">
-        <?php
-        echo "<br>";
-        echo "<a href='../create/delete_discussion.php?discussionId=" . $discussionId . "'><button>Delete</button></a>";
-        echo "<a href='edit_my_discussion.php?discussionId=" . $discussionId . "'><button>Edit</button></a>";
-        ?>
+        <br>
+        <form method = "post" action = "../create/delete_discussion.php">
+            <input type = "hidden" name = "discussionId" value = <?php echo $discussionId ?> >
+            <button>Delete</button>
+        </form>
+
+        <form method = "post" action = "edit_my_discussion.php">
+            <input type = "hidden" name = "discussionId" value = <?php echo $discussionId ?> >
+            <button>Edit</button>
+        </form>
+
+
     </div>
         <?php
     }

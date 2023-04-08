@@ -86,8 +86,16 @@ while ($row = $result->fetch_assoc()) {
 
 
     if ((!empty($_SESSION['email']) && strcmp($row['commentEmail'], $_SESSION['email']) === 0) || !empty($_SESSION['admin'])) {
+
         echo "<button class = \"editButton\">Edit</button>";
-        echo "<a href = \"../create/delete_comment.php?commentId={$row['commentId']}\"><button class = \"deleteButton\">Delete</button></a>";
+        ?>
+
+        <form method = "post" action = "../create/delete_comment.php">
+        <input type = "hidden" name = "commentId" value =  <?php echo $row["commentId"]; ?> >
+            <button>Delete</button>
+        </form>
+
+<?php
     }
     echo "<br>";
     echo "</div>";

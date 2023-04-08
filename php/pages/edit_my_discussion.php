@@ -7,6 +7,14 @@ require_once '../db/dbConnection.php';
 session_start();
 if(empty($_SESSION['visited']))
 {
+    if($_SERVER["REQUEST_METHOD"] != "POST")
+    {
+        echo "<p> Bad Request </p>";
+        exit();
+    }
+
+    $_SESSION["discussionId"] = $_POST["discussionId"];
+
 $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
 header("Location: ../login/logincheck.php"); 
 }
@@ -23,9 +31,10 @@ if($error != null){
 else{
 
 
-    session_start();
-    parse_str($_SERVER['QUERY_STRING'], $params);
-    $discussionId = $params['discussionId'];
+
+    $discussionId = $_SESSION['discussionId'];
+    unset($_SESSION["discussionId"]);
+
     $email = $_SESSION['email'];
     $sql = "SELECT user.email, title, description FROM discussion, user WHERE user.email = discussion.email AND user.email = '$email' AND discussionId = '$discussionId'";
     $result = mysqli_query($connection, $sql);
@@ -34,9 +43,9 @@ else{
      {
         $err_message = "<p>Sorry, you cannot edit a discussion that was not created by you.</p>";
         exit($err_message);
-                 
+
      }
-           
+
 
 }
 
