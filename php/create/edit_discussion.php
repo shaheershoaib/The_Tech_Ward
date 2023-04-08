@@ -2,6 +2,11 @@
 
 use db\dbConnection;
 
+ini_set('display_errors', 1); // Enable displaying errors
+ini_set('display_startup_errors', 1); // Enable displaying startup errors
+error_reporting(E_ALL); // Set the
+
+
 session_start();
 
 
@@ -87,14 +92,19 @@ else{
                 echo "Sorry, your file was not uploaded.";
            
               } else {
-                if (move_uploaded_file($filearray["image"]["tmp_name"], $file)) {
-                  
+
+                   if(empty($_FILES["image"]["tmp_name"]))
+                   if (move_uploaded_file($_FILES["image"]["tmp_name"], $file)) {
+
+
+                       $flag2 = 1;
+                   } else {
+                       echo "<br> Error Uploading the file";
+                   }
+
                  
                   $flag2 = 1;
-                } else {
-                  echo "<br> Error Uploading the file";
-                  echo $filearray["image"]["tmp_name"];
-                }
+
           
           
           

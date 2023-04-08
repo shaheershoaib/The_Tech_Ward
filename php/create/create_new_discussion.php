@@ -26,7 +26,9 @@ else
     session_start();
     if(empty($_SESSION['email']))
     {
-        header("Location: ../../html/login.html");
+        echo $_SESSION["email"];
+        //header("Location: ../../html/login.html");
+
     }
    
     else
