@@ -40,7 +40,7 @@ else{
     $discussionId = $_SESSION["discussionId"];
     $title = $_SESSION["title"];
     $desc = $_SESSION["desc"];
-    $file = $_SESSION["file"];
+    $filearray = $_SESSION["file"];
 
     unset($_SESSION['discussionId']);
     unset($_SESSION['title']);
@@ -54,48 +54,47 @@ else{
         if (($row = $result->fetch_assoc()) || !empty($_SESSION['admin'])) { // If there is a row, then that means the current discussionId belongs to the currently logged-in user
             //Or, if this is the admin
             
-            if($_FILES['image']['error'] === UPLOAD_ERR_OK ) {
+            if($filearray['image']['error'] === UPLOAD_ERR_OK ) {
+              echo "Inside if";
                 
-        //         $dir = "pp/";
-        //          $file = $dir . basename($_FILES["image"]["name"]);
-        //          $flag = 1;
-        //          $flag2 = 0;
-        //          $imageFileType = strtolower(pathinfo($file,PATHINFO_EXTENSION));
-        //          $fileName = $_FILES['image']['name'];
+                $dir = "uploads/";
+                 $file = $dir . basename($filearray["image"]["name"]);
+                 $flag = 1;
+                 $flag2 = 0;
+                 $imageFileType = strtolower(pathinfo($file,PATHINFO_EXTENSION));
+                 $fileName = $filearray['image']['name'];
           
           
           
+       
           
-          
-        //         //  if (file_exists($file)) {
-        //         //   echo "<br>Duplicate file entry";
-        //         //   $flag = 0;
-        //         // }
-          
-        //         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif" && $imageFileType != "jpeg" ) {
-        //         echo "<br>Cannot support the uploaded file format.";
-        //         $flag = 0;
-        //        }
-          
-        //        if ($_FILES["image"]["size"] > 500000) {
-        //         echo "<br>File too large.Max file size is 100K";
-        //         $flag = 0;
-        //       }
-          
-          
-          
-          
-        //        if ($flag == 0) {
-        //         echo "Sorry, your file was not uploaded.";
            
-        //       } else {
-        //         if (move_uploaded_file($_FILES["image"]["tmp_name"], $file)) {
+          
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif" && $imageFileType != "jpeg" ) {
+                echo "<br>Cannot support the uploaded file format.";
+                $flag = 0;
+               }
+          
+               if ($filearray["image"]["size"] > 500000) {
+                echo "<br>File too large.Max file size is 100K";
+                $flag = 0;
+              }
+          
+          
+          
+          
+               if ($flag == 0) {
+                echo "Sorry, your file was not uploaded.";
+           
+              } else {
+                if (move_uploaded_file($filearray["image"]["tmp_name"], $file)) {
                   
                  
-        //           $flag2 = 1;
-        //         } else {
-        //           echo "<br> Error Uploading the file";
-        //         }
+                  $flag2 = 1;
+                } else {
+                  echo "<br> Error Uploading the file";
+                  echo $filearray["image"]["tmp_name"];
+                }
           
           
           
@@ -105,7 +104,7 @@ else{
           
              
           
-        //   }
+          }
           
         //   if($flag2 == 1){
         //    $imagedata = file_get_contents("pp/".$fileName);
