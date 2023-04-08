@@ -26,8 +26,8 @@ else
     session_start();
     if(empty($_SESSION['email']))
     {
-        echo $_SESSION["email"];
-        //header("Location: ../../html/login.html");
+
+        header("Location: ../../html/login.html");
 
     }
    
@@ -40,16 +40,7 @@ else
        //if(isset($_FILES['image']))
 
         {
-
-
-
-
-
-
-
-
-
-
+            
 
 
             // $file_contents = file_get_contents($_FILES['image']['tmp_name']);
