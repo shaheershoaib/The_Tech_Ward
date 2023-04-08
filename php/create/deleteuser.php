@@ -37,7 +37,7 @@ else
 
      $ds = "DELETE FROM user where email = '$email' ; ";
      $result = mysqli_query($connection, $ds);
-     header("Location: ../../html/signup.html");
+     header("Location: ../../html/homepage.html");
     
 }
 

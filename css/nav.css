@@ -10,8 +10,8 @@ nav {
     line-height: 1em;
     padding: 0em 1em;
     position: fixed;
-    background-color: #601cea;
-
+ background-color: #ffffbf;
+ border: 4px solid #90ee8f;
 }
 
 .logo {
