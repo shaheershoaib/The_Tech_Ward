@@ -30,7 +30,7 @@ unset($_SESSION["pass"]);
 <?php
 require_once '../db/dbConnection.php';
 
-if ($_SESSION["requestMethod"] == "POST") {
+
 
 $dbConnection = new dbConnection();
 $connection = $dbConnection->getConnection();
@@ -67,11 +67,8 @@ else
 mysqli_free_result($result);
 mysqli_close($connection);
 }
-}
-else{
-    die("Bad Request");
 
-}
+
 ?>
 
 <?php } ?>

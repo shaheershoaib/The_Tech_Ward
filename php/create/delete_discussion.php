@@ -7,6 +7,14 @@ require_once '../db/dbConnection.php';
 
 session_start();
 if(empty($_SESSION['visited'])){
+    if($_SERVER["REQUEST_METHOD"] != "POST")
+    {
+        echo "<p>Bad Request</p>";
+        exit();
+    }
+
+    $_SESSION["discussionId"] = $_POST["discussionId"];
+
 $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
 header("Location: ../login/logincheck.php"); 
 }
@@ -22,10 +30,9 @@ if($error != null){
 }
 
 else{
- //Check if discussion belongs to the user
-    session_start();
-    parse_str($_SERVER['QUERY_STRING'], $params);
-    $discussionId = $params['discussionId'];
+
+    $discussionId = $_SESSION['discussionId'];
+    unset($_SESSION['discussionId']);
     $email = $_SESSION['email'];
     $sql = "SELECT discussionId, email FROM discussion WHERE discussionId = '$discussionId'";
     $result = mysqli_query($connection, $sql);
