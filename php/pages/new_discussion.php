@@ -70,8 +70,8 @@ unset($_SESSION['visited']);
             <label for="description">Description:</label>
             <textarea name="desc" required id="description"></textarea>
             <br><br>
-            <label for="image">Upload Image (optional) : </label>
-            <input type="file" id="image" name="image">
+            <label for="image" >Upload Image (optional) : </label>
+            <input type="file" id="image" name="image" accept="image/png, image/gif, image/jpeg">
          <br><br>
             <button type="reset">clear form</button>
             <button type="submit">post</button>

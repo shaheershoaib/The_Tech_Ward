@@ -112,7 +112,7 @@ else{
             <textarea name="desc" required id="description"><?php echo $row["description"]; ?></textarea>
             <br><br>
             <label for="image">Upload Image (optional) : </label>
-            <input type="file" id="image" name="image">
+            <input type="file" id="image" name="image" accept="image/png, image/gif, image/jpeg">
             <input type="hidden" name="discussionId" value="<?php echo $discussionId; ?>">
          <br><br>
             <button type="reset">Clear Discussion</button>
