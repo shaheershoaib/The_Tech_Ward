@@ -5,7 +5,19 @@
 use db\dbConnection;
 
 session_start();
+
+
 if(empty($_SESSION['visited'])){
+    if($_SERVER["REQUEST_METHOD"] != "POST")
+    {
+        echo "<p>Bad Request</p>";
+        exit();
+    }
+
+    $_SESSION["comment"] = $_POST["comment"];
+    $_SESSION["commentId"] = $_POST["commentId"];
+    $_SESSION["discussionId"] = $_POST["discussionId"];
+
 $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
 header("Location: ../login/logincheck.php"); 
 }
@@ -26,9 +38,14 @@ if($error != null){
 else{
 
 
-    $comment= $_GET["comment"];
-    $commentId = $_GET["commentId"];
-    $discussionId = $_GET["discussionId"];
+    $comment= $_SESSION["comment"];
+    $commentId = $_SESSION["commentId"];
+    $discussionId = $_SESSION["discussionId"];
+
+    unset($_SESSION["comment"]);
+    unset($_SESSION["commentId"]);
+    unset($_SESSION["discussionId"]);
+
     if( ($comment!=null && $comment!= "") && ($commentId!=null && $commentId!="") && ($discussionId != null && $discussionId != "")) {
 
         $sql = "SELECT * FROM user, comment WHERE comment.email = user.email AND commentId = '$commentId'";

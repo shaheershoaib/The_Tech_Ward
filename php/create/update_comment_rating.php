@@ -8,6 +8,14 @@ error_reporting(E_ALL);
 
 
 session_start();
+if($_SERVER["REQUEST_METHOD"] != "POST")
+{
+    echo "<p>Bad Request</p>";
+    exit();
+}
+$_SESSION["commentId"] = $_POST["commentId"];
+$_SESSION["isLike"] = $_POST["isLike"];
+
 if (empty($_SESSION['visited'])) {
     $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
     header("Location: ../login/logincheck.php");
@@ -15,9 +23,12 @@ if (empty($_SESSION['visited'])) {
     unset($_SESSION['visited']);
 }
 
-$commentId = $_GET["commentId"];
-$isLike = $_GET["isLike"];
+$commentId = $_SESSION["commentId"];
+$isLike = $_SESSION["isLike"];
 $email = $_SESSION["email"];
+
+unset($_SESSION["commentId"]);
+unset($_SESSION["isLike"]);
 
 require_once '../db/dbConnection.php';
 $dbConnection = new dbConnection();

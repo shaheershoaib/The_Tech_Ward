@@ -110,7 +110,7 @@ while ($row = $result->fetch_assoc()) {
         childDiv.remove();
 
         const editCommentTextArea = $('<textarea>').html(childDivComment).attr('required', '');
-        const form = $('<form>').attr('method', 'GET').attr('action', '../create/edit_comment.php');
+        const form = $('<form>').attr('method', 'POST').attr('action', '../create/edit_comment.php');
         const saveEditButton = $('<button>').html('Save Edit').addClass('saveEditButton');
         editCommentTextArea.attr('name', 'comment');
         const hiddenCommentInput = $('<input>').attr('type', 'hidden').attr('name', 'commentId').val(parentDiv.attr('commentId'));
@@ -143,7 +143,7 @@ while ($row = $result->fetch_assoc()) {
         $(this).parent().attr("hasRated", "1");
         $(this).siblings(".dislikeButton").prop("disabled", false);
 
-        $.get("../create/update_comment_rating.php", {commentId: commentId, isLike: 1}, function(){
+        $.post("../create/update_comment_rating.php", {commentId: commentId, isLike: 1}, function(){
 
         });
 
@@ -169,7 +169,7 @@ while ($row = $result->fetch_assoc()) {
         $(this).parent().attr("hasRated", "1");
         $(this).siblings(".likeButton").prop("disabled", false);
 
-        $.get("../create/update_comment_rating.php", {commentId: commentId, isLike: -1}, function(){
+        $.post("../create/update_comment_rating.php", {commentId: commentId, isLike: -1}, function(){
 
         });
 

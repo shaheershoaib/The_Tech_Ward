@@ -168,7 +168,7 @@ while ($row = $result->fetch_assoc()) {
         $(this).parent().attr("hasRated", "1");
         $(this).siblings(".likeButton").prop("disabled", false);
 
-        $.get("../create/update_discussion_rating.php", {discussionId: discussionId, isLike: -1}, function(){
+        $.post("../create/update_discussion_rating.php", {discussionId: discussionId, isLike: -1}, function(){
 
         });
 

@@ -3,19 +3,24 @@
 use db\dbConnection;
 
 session_start();
-if($_SERVER["REQUEST_METHOD"] != "POST")
-{
-    echo "<p> Bad request </p>";
-    exit();
-}
 
-$discussionId = $_POST["discussionId"];
-$title = $_POST["title"];
-$desc = $_POST["desc"];
 
 if(empty($_SESSION['visited'])){
+
+    if($_SERVER["REQUEST_METHOD"] != "POST")
+    {
+        echo "<p> Bad request </p>";
+        exit();
+    }
+
+    $_SESSION["discussionId"] = $_POST["discussionId"];
+    $_SESSION["title"] = $_POST["title"];
+    $_SESSION["desc"] = $_POST["desc"];
+    $_SESSION["file"] = $_FILES;
+
 $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
 header("Location: ../login/logincheck.php"); 
+
 }
 
 else{
@@ -32,6 +37,15 @@ if($error != null){
 else{
  //Check if discussion belongs to the user
     $email = $_SESSION['email'];
+    $discussionId = $_SESSION["discussionId"];
+    $title = $_SESSION["title"];
+    $desc = $_SESSION["desc"];
+    $file = $_SESSION["file"];
+
+    unset($_SESSION['discussionId']);
+    unset($_SESSION['title']);
+    unset($_SESSION['desc']);
+    unset($_SESSION["file"]);
 
     if($email!=null && ($discussionId!=null && $discussionId!= "") && ($title != null && $title!="") && ($desc !=null && $desc!= "")) {
         $sql = "SELECT * FROM user, discussion WHERE user.email = discussion.email AND user.email = '$email' AND discussionId = '$discussionId'";
