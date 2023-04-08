@@ -54,7 +54,7 @@ else{
         if (($row = $result->fetch_assoc()) || !empty($_SESSION['admin'])) { // If there is a row, then that means the current discussionId belongs to the currently logged-in user
             //Or, if this is the admin
             
-            if($_FILES['image']['error'] === UPLOAD_ERR_OK ) {
+            if($file['image']['error'] === UPLOAD_ERR_OK ) {
                 
         //         $dir = "pp/";
         //          $file = $dir . basename($_FILES["image"]["name"]);
