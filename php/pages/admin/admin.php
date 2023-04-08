@@ -18,6 +18,7 @@ unset($_SESSION['visited']);
 <head lang="en">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../../css/project.css">
+    <link rel="stylesheet" href="../../../css/nav.css">
 
 
     <title> Edit My Discussion </title>
