@@ -1,5 +1,3 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/enf2qyfT)
-
 <h1 align="center">The Tech Ward (My Discussion Forum)</h1>
 <p align = "center"><a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=040E13&center=true&width=435&lines=Full+of+tech+colloquy" alt="Typing SVG" /></a><p>
 
